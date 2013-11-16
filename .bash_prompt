@@ -29,11 +29,11 @@ function git_branch() {
 function set_prompt() {
   local status_symbol=$(git_status_symbol)
   local branch=$(git_branch)
-  local prompt="[\[$CYAN\]\u\[$WHITE\]][\[$GREEN\]\w\[$WHITE\]]"
+  local prompt="\[$WHITE\][\[$CYAN\]\u\[$WHITE\]][\[$GREEN\]\w\[$WHITE\]]"
   if [ $branch ]; then
-    prompt="$prompt[\[$BLUE\]$branch $status_symbol\[$WHITE\]]"
+    prompt="$prompt\[$WHITE\][\[$BLUE\]$branch $status_symbol\[$WHITE\]]"
   fi
-  export PS1="$prompt\[$WHITE\] » "
+  export PS1="$prompt \[$WHITE\]» \[$RESET\]"
 }
 
 PROMPT_COMMAND=set_prompt
