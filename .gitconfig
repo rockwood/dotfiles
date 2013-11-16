@@ -78,3 +78,7 @@
 
 [push]
 	default = matching
+
+[user]
+  email = kevin@rockwood.me
+  name = Kevin Rockwood
