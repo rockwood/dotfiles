@@ -13,10 +13,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "0x6D746873"
-sudo scutil --set HostName "0x6D746873"
-sudo scutil --set LocalHostName "0x6D746873"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
+# sudo scutil --set ComputerName "0x6D746873"
+# sudo scutil --set HostName "0x6D746873"
+# sudo scutil --set LocalHostName "0x6D746873"
+# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -177,16 +177,16 @@ defaults write com.apple.BezelServices kDimTime -int 300
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
-defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
-defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true
+# defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
+# defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
+# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+# defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Set the timezone; see `systemsetup -listtimezones` for other values
-systemsetup -settimezone "Europe/Brussels" > /dev/null
+# systemsetup -settimezone "America/New York" > /dev/null
 
 # Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
 
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -344,14 +344,14 @@ defaults write com.apple.dock show-process-indicators -bool true
 #defaults write com.apple.dock persistent-apps -array
 
 # Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
+# defaults write com.apple.dock launchanim -bool false
 
 # Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
+# defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
-defaults write com.apple.dock expose-group-by-app -bool false
+# defaults write com.apple.dock expose-group-by-app -bool false
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
@@ -364,6 +364,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
+
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 
@@ -400,13 +401,13 @@ sudo ln -sf /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app 
 # 11: Launchpad
 # 12: Notification Center
 # Top left screen corner → Mission Control
-defaults write com.apple.dock wvous-tl-corner -int 2
+defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Desktop
-defaults write com.apple.dock wvous-tr-corner -int 4
+defaults write com.apple.dock wvous-tr-corner -int 0
 defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Start screen saver
-defaults write com.apple.dock wvous-bl-corner -int 5
+defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 ###############################################################################
@@ -468,7 +469,7 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 # Disable automatic spell checking
-defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
+defaults write com.apple.mail SpellCheckingBehavior -string "SpellCheckingEnabled"
 
 ###############################################################################
 # Spotlight                                                                   #
@@ -583,7 +584,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 # Disable continuous spell checking
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool true
 
 ###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
