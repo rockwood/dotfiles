@@ -13,11 +13,14 @@
 	tags = tag -l
 	br = branch
   brs = branch -a
+  co = checkout
 	remotes = remote -v
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
-	tree = "!open -a SourceTree ."
-	co = checkout
+	# Open SourceTree
+  tree = "!open -a SourceTree ."
+  # Pull with rebase
+  tug = pull --rebase
 
 [apply]
 	# Detect whitespace errors when applying a patch
