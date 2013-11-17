@@ -1,4 +1,4 @@
-# Mathias’s dotfiles
+# Rockwood's dotfiles. Based on [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles.git)
 
 ## Installation
 
@@ -7,7 +7,7 @@
 You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
 
 ```bash
-git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles && source bootstrap.sh
+git clone https://github.com/rockwood/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:
@@ -21,16 +21,6 @@ Alternatively, to update while avoiding the confirmation prompt:
 ```bash
 set -- -f; source bootstrap.sh
 ```
-
-### Git-free install
-
-To install these dotfiles without Git:
-
-```bash
-cd; curl -#L https://github.com/mathiasbynens/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt}
-```
-
-To update later on, just run that command again.
 
 ### Specify the `$PATH`
 
@@ -85,12 +75,11 @@ You could also install native apps with [`brew cask`](https://github.com/phinze/
 ./.cask
 ```
 
-## Feedback
-
-Suggestions/improvements
-[welcome](https://github.com/mathiasbynens/dotfiles/issues)!
-
 ## Author
+| [![twitter/kevinrockwood](http://www.gravatar.com/avatar/180276ea8f2063445af08593e20f53ec?s=70)](http://twitter.com/kevinrockwood "Follow @kevinrockwood on Twitter") |
+|---|
+| [Kevin Rockwood](http://rockwood.me/) |
+
 
 | [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
