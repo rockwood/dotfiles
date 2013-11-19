@@ -14,11 +14,11 @@ export WHITE="\033[0;97m"
 export GREY="\033[0;m"
 export RESET="\033[0m"
 
-function git_status_symbol() {
+function git_status_color() {
   if [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]]; then
-    echo -en "${RED}✗${RESET}"
+    echo $RED
   else
-    echo -en "${GREEN}✓${RESET}"
+    echo $GREEN
   fi
 }
 
@@ -27,11 +27,10 @@ function git_branch() {
 }
 
 function set_prompt() {
-  local status_symbol=$(git_status_symbol)
   local branch=$(git_branch)
-  local prompt="\[$WHITE\][\[$CYAN\]\u\[$WHITE\]][\[$GREEN\]\w\[$WHITE\]]"
+  local prompt="\[$WHITE\][\[$CYAN\]\u\[$WHITE\]][\[$BLUE\]\w\[$WHITE\]]"
   if [ $branch ]; then
-    prompt="$prompt\[$WHITE\][\[$BLUE\]$branch $status_symbol\[$WHITE\]]"
+    prompt="$prompt\[$WHITE\][\[$(git_status_color)\]$branch\[$WHITE\]]"
   fi
   export PS1="$prompt \[$WHITE\]» \[$RESET\]"
 }
