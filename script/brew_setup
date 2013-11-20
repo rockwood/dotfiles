@@ -22,11 +22,14 @@ brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 
 # Install other useful binaries
-
 brew install the_silver_searcher
 brew install git
 brew install node
+brew install rbenv
+brew install ruby-build
+brew install postgresql
 brew install tree
+brew install phantomjs
 brew install ffmpeg
 
 # Remove outdated versions from the cellar
