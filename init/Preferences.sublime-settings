@@ -1,29 +1,29 @@
 {
-	"default_line_ending": "unix",
-	"detect_indentation": false,
-	"ensure_newline_at_eof_on_save": false,
-	"file_exclude_patterns":
-	[
-		".DS_Store",
-		"Desktop.ini",
-		"*.pyc",
-		"._*",
-		"Thumbs.db",
-		".Spotlight-V100",
-		".Trashes"
-	],
-	"folder_exclude_patterns":
-	[
-		".git"
-	],
-	"font_size": 15.0,
-	"highlight_modified_tabs": true,
-	"hot_exit": false,
-	"line_padding_bottom": 6,
-	"matchBracketsAngle": true,
-	"remember_open_files": false,
-	"tab_size": 2,
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true
+  "default_line_ending": "unix",
+  "detect_indentation": false,
+  "ensure_newline_at_eof_on_save": false,
+  "file_exclude_patterns":
+  [
+    ".DS_Store",
+    "Desktop.ini",
+    "*.pyc",
+    "._*",
+    "Thumbs.db",
+    ".Spotlight-V100",
+    ".Trashes"
+  ],
+  "folder_exclude_patterns":
+  [
+    ".git"
+  ],
+  "font_size": 15.0,
+  "highlight_modified_tabs": true,
+  "hot_exit": false,
+  "line_padding_bottom": 6,
+  "matchBracketsAngle": true,
+  "remember_open_files": false,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "word_wrap": true
 }
