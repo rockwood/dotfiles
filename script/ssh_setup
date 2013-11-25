@@ -1,0 +1,13 @@
+#! /bin/bash
+
+SSH_PATH="$HOME/.ssh"
+
+if [ ! -d $SSH_PATH ]; then
+  `mkdir $SSH_PATH`
+fi
+
+$(ssh-keygen -t rsa -C "kevin@rockwood.me" -f $SSH_PATH/id_rsa)
+$(ssh-add $SSH_PATH/id_rsa)
+$(pbcopy < $SSH_PATH/id_rsa.pub)
+
+echo "Public key coppied to clipboard"
