@@ -1,96 +1,148 @@
-" Make Vim more useful
-set nocompatible
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
-" Allow cursor keys in insert mode
-set esckeys
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-" Optimize for fast terminal connections
-set ttyfast
-" Add the g flag to search/replace by default
-set gdefault
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-" Change mapleader
-let mapleader=","
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-  set undodir=~/.vim/undo
-endif
+set nocompatible               " be iMproved
+filetype off                   " required!
 
-" Respect modeline in files
-set modeline
-set modelines=4
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-" Enable line numbers
-set number
-" Enable syntax highlighting
+" Vundle
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-rails'
+Bundle 'surround.vim'
+Bundle 'endwise.vim'
+Bundle 'vim-coffee-script'
+Bundle 'wincent/Command-T'
+Bundle 'jQuery'
+Bundle 'matchit.zip'
+Bundle 'ack.vim'
+Bundle 'ragtag.vim'
+Bundle 'fugitive.vim'
+Bundle 'https://github.com/jgdavey/vim-railscasts.git'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'eraserhd/vim-ios'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+
+filetype plugin indent on
 syntax on
-" Highlight current line
-set cursorline
-" Make tabs as wide as two spaces
-set tabstop=2
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
-" Highlight searches
+
+set shortmess=I
+
+set t_Co=256
+set background=dark
+colorscheme grb256
+
+set nu
+
+let mapleader=","
+set timeoutlen=250
+set history=256
+
+set nowrap
+
+" edit .vimrc
+nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Backup
+set nowritebackup
+set nobackup
+set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
+
+" Buffers
+set autoread
+set hidden
+
+" Search
 set hlsearch
-" Ignore case of searches
 set ignorecase
-" Highlight dynamically as pattern is typed
+set smartcase
 set incsearch
-" Always show status line
+map <Space> :set hlsearch!<cr>
+
+" Completion
+set showmatch
+set wildmenu
+
+" Splits
+set splitbelow
+set splitright
+
+" Indentation and Tab handling
+set smarttab
+set expandtab
+set autoindent
+set shiftwidth=2
+set tabstop=2
+set autoindent smartindent
+
+" Backspace
+set backspace=indent,eol,start
+
+" Tab bar
+set showtabline=2
+
+" Status Line
+set encoding=utf-8
 set laststatus=2
-" Enable mouse in all modes
-set mouse=a
-" Disable error bells
-set noerrorbells
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-" Show the cursor position
-set ruler
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-" Show the current mode
-set showmode
-" Show the filename in the window titlebar
-set title
-" Show the (partial) command as it’s being typed
-set showcmd
-" Use relative line numbers
-if exists("&relativenumber")
-  set relativenumber
-  au BufReadPost * set relativenumber
-endif
-" Start scrolling three lines before the horizontal window border
-set scrolloff=3
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
+function! ShowWrap()
+  if &wrap
+    return "[wrap]"
+  else
+    return ""
 endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" Automatic commands
+function! ShowSpell()
+  if &spell
+    return "[spell]"
+  else
+    return ""
+endfunction
+
+" colors
+highlight CursorLine cterm=NONE ctermbg=0
+highlight StatusLine term=reverse ctermfg=65 ctermbg=255 guifg=#FFFFFF guibg=#005f5f
+highlight StatusLineNC cterm=NONE ctermfg=250 ctermbg=239
+highlight TabLineFill ctermfg=239
+highlight LineNr ctermfg=65
+set cursorline!
+
+" whitespace
+set nolist listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:«
+nmap <silent> <leader>s :set nolist!<CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" command-t settings
+let g:CommandTMaxHeight=20
+let g:CommandTMatchWindowReverse=1
+let g:CommandTAcceptSelectionSplitMap=['<C-s>', '<C-CR>']
+let g:CommandTCancelMap=['<C-c>', '<Esc>']
+noremap <leader>f :CommandTFlush<CR>
+
 if has("autocmd")
-  " Enable file type detection
-  filetype on
-  " Treat .json files as .js
-  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " jQuery settings
+  au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+  " handlebars
+  au BufNewFile,BufRead *.handlebars.* set filetype=handlebars
+
+  " Jimfile
+  au BufNewFile,BufRead Jimfile set filetype=javascript
+
+  " ruby. why.
+  au BufNewFile,BufRead Vagrantfile,Podfile set filetype=ruby
 endif
+
+" Source a local configuration file if available.
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+set mouse=a
+
+let g:netrw_liststyle=3
+
+" can haz spell
+iab inpsection inspection
+iab Inpsection Inspection
