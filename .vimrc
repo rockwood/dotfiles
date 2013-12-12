@@ -139,6 +139,11 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_custom_ignore = '\.git$\|'
+let g:ctrlp_custom_ignore .= '\.beam$\|'
+let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
+let g:ctrlp_custom_ignore .= '\.tmp$\|'
+let g:ctrlp_custom_ignore .= '\.DS_Store$'
 
 set mouse=a
 
