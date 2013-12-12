@@ -138,6 +138,8 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
 set mouse=a
 
 let g:netrw_liststyle=3
