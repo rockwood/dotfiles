@@ -112,13 +112,6 @@ set nolist listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:«
 nmap <silent> <leader>s :set nolist!<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
-" command-t settings
-let g:CommandTMaxHeight=20
-let g:CommandTMatchWindowReverse=1
-let g:CommandTAcceptSelectionSplitMap=['<C-s>', '<C-CR>']
-let g:CommandTCancelMap=['<C-c>', '<Esc>']
-noremap <leader>f :CommandTFlush<CR>
-
 if has("autocmd")
   " jQuery settings
   au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
