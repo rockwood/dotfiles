@@ -1,5 +1,5 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
+# Add homebrew and `~/bin` to the `$PATH`
+export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
 # Add rbenv autocompletion
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
