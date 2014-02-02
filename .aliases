@@ -1,9 +1,15 @@
-# Shortcuts
+# SublimeText
 alias st="subl"
 
 # Bundler
 alias bi="bundle --path vendor"
 alias be="bundle exec"
+
+# Rails
+alias migrate="rake db:migrate && rake db:migrate RAILS_ENV=test"
+
+# Directories
+alias md="mkdir -p"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
