@@ -232,17 +232,6 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
@@ -252,6 +241,8 @@ try
   set stal=2
 catch
 endtry
+
+set showtabline=0
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
