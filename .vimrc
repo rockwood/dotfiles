@@ -139,7 +139,7 @@ set foldcolumn=1
 syntax enable
 
 try
-  colorscheme grb256
+  colorscheme darkburn
 catch
 endtry
 
