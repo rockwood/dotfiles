@@ -4,10 +4,13 @@
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+You can clone the repository wherever you want. (I like to keep it in `~/devel/dotfiles`) The bootstrapper script will pull in the latest version and copy the files to your home folder. Vim plugins are managed via git submodules, so you'll need to init those before bootstrapping.
 
 ```bash
-git clone https://github.com/rockwood/dotfiles.git && cd dotfiles && source bootstrap.sh
+git clone https://github.com/rockwood/dotfiles.git
+cd dotfiles
+git submodule update --init
+source bootstrap.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:
@@ -36,27 +39,16 @@ export PATH="$HOME/utils:$PATH"
 
 If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
 
-My `~/.extra` looks something like this:
-
-```bash
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Mathias Bynens"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="mathias@mailinator.com"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
-```
-
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
+
+## Scripts
 
 ### Sensible OS X defaults
 
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.osx
+script/osx_setup
 ```
 
 ### Install Homebrew formulae
@@ -64,7 +56,7 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
 
 ```bash
-./.brew
+script/brew_setup
 ```
 
 ### Install native apps with `brew cask`
@@ -72,7 +64,23 @@ When setting up a new Mac, you may want to install some common [Homebrew](http:/
 You could also install native apps with [`brew cask`](https://github.com/phinze/homebrew-cask):
 
 ```bash
-./.cask
+script/cask_setup
+```
+
+### Run ssh setup
+
+This will walk through creating an ssh key
+
+```bash
+script/ssh_setup
+```
+
+### Print bash colors
+
+Helpful if you're tweeking your iTerm theme
+
+```bash
+script/colors
 ```
 
 ## Author
