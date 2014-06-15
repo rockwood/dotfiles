@@ -12,5 +12,4 @@ installcask google-chrome
 installcask google-chrome-canary
 installcask iterm2
 installcask macvim
-installcask sublime-text
 installcask vlc

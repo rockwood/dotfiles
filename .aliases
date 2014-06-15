@@ -1,6 +1,3 @@
-# SublimeText
-alias st="subl"
-
 # Bundler
 alias bi="bundle --path vendor"
 alias be="bundle exec"
