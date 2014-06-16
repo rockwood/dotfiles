@@ -4,12 +4,11 @@
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/devel/dotfiles`) The bootstrapper script will pull in the latest version and copy the files to your home folder. Vim plugins are managed via git submodules, so you'll need to init those before bootstrapping.
+You can clone the repository wherever you want. (I like to keep it in `~/devel/dotfiles`) The bootstrapper script will pull in the latest version (including submodules) and copy the files to your home folder. Vim plugins are managed via git submodules (see `.gitmodules`).
 
 ```bash
 git clone https://github.com/rockwood/dotfiles.git
 cd dotfiles
-git submodule update --init
 source bootstrap.sh
 ```
 

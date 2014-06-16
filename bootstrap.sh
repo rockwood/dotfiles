@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
+git submodule update --init
+
 function doIt() {
-  rsync --exclude ".git/" --exclude ".gitmodules" --exclude "script/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-    --exclude "README.md" --exclude "LICENSE-MIT.txt" -av --no-perms . ~
+  rsync --exclude ".git/" --exclude ".gitmodules" --exclude "script/" --exclude ".DS_Store" \
+    --exclude "bootstrap.sh" --exclude "README.md" --exclude "LICENSE-MIT.txt" -av --no-perms . ~
   source ~/.bash_profile
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
