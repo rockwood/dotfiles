@@ -25,6 +25,8 @@
   tree = "!open -a SourceTree ."
   # Pull with rebase
   tug = pull --rebase
+  # Delete all mergered branches
+  clean-branches = "!git branch --merged | grep -v '\\*\\|master' | xargs -n 1 git branch -d"
 
 [core]
   # Use custom `.gitignore` and `.gitattributes`
