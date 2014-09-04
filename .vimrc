@@ -111,6 +111,12 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
