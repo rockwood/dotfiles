@@ -28,7 +28,7 @@ function git_branch() {
 
 function set_prompt() {
   local branch=$(git_branch)
-  local prompt="\[$WHITE\][\[$CYAN\]\u\[$WHITE\]][\[$BLUE\]\w\[$WHITE\]]"
+  local prompt="\[$WHITE\][\[$BLUE\]\w\[$WHITE\]]"
   if [ $branch ]; then
     prompt="$prompt\[$WHITE\][\[$(git_status_color)\]$branch\[$WHITE\]]"
   fi
