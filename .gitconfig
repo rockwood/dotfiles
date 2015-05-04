@@ -67,6 +67,7 @@
   pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
-
 [push]
-  default = matching
+  default = simple
+[pull]
+  rebase = true
