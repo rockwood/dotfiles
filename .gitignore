@@ -13,4 +13,15 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+# Environment settings
 .env
+
+# Procfiles
+Procfile.rock
+
+# Vendored ruby
+vendor/ruby
+
+# Redis dumps
+dump.rdb
+
