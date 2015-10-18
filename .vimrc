@@ -203,7 +203,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set nowrap "Don't wrap lines  
+set nowrap "Don't wrap lines
 
 
 """"""""""""""""""""""""""""""
@@ -438,37 +438,10 @@ endfunction
 :map <leader>l :PromoteToLet<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
+" Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-execute pathogen#infect()
 
-"""""""""""""""""""""""""""""
-" NERDTree
-"""""""""""""""""""""""""""""
-autocmd vimenter * if !argc() | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-" Close vim if only NERDTree is left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Vim Plug
+call plug#begin()
 
-"""""""""""""""""""""""""""""
-" Ctrlp
-"""""""""""""""""""""""""""""
-set runtimepath^=~/.vim/bundle/ctrlp
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-"""""""""""""""""""""""""""""
-" Markdown
-"""""""""""""""""""""""""""""
-let g:vim_markdown_folding_disabled=1
+call plug#end()
