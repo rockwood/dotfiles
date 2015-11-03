@@ -52,7 +52,7 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 try
-  colorscheme darkburn
+  colorscheme seoul256
 catch
 endtry
 
