@@ -226,6 +226,7 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
