@@ -136,9 +136,6 @@ if has('nvim')
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-l> <C-\><C-n><C-w>l
-
-  " make ESC work the same in terminals
-  tnoremap <esc> <C-\><C-n>
 endif
 
 " Switch CWD to the directory of the open buffer
@@ -200,6 +197,14 @@ autocmd BufWrite * :call DeleteTrailingWS()
 " map ctrl + s to write
 map <C-s> :w<CR>
 imap <C-s> <C-c>:w<CR>
+
+if has('nvim')
+  " make ESC work the same in terminals
+  tnoremap <esc> <C-\><C-n>
+
+  " enter insert mode when switching to a terminal
+  autocmd WinEnter term://* startinsert
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
