@@ -125,10 +125,21 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Make neovim terminals act the same way
+if has('nvim')
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+
+  " make ESC work the same in terminals
+  tnoremap <esc> <C-\><C-n>
+endif
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
