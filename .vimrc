@@ -197,6 +197,10 @@ autocmd BufWrite * :call DeleteTrailingWS()
 map <C-s> :w<CR>
 imap <C-s> <C-c>:w<CR>
 
+" User Enter key to insert new lines
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+
 if has('nvim')
   " make ESC work the same in terminals
   tnoremap <esc> <C-\><C-n>
