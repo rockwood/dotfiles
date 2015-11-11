@@ -163,13 +163,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,10 +236,12 @@ endfunction
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -288,4 +283,22 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+"""""""""""""""""""""""""""""
+" Lightline
+"""""""""""""""""""""""""""""
+
+let g:lightline = {
+\   'colorscheme': 'seoul256',
+\   'active': {
+\     'left': [['mode'], ['fugitive'], ['filename', 'modified']],
+\     'right': [['filetype', 'fileencoding']],
+\   },
+\   'component': {
+\     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+\   },
+\   'component_visible_condition': {
+\     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+\   }
+\ }
 
