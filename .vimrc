@@ -35,8 +35,9 @@ set lazyredraw
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set mat=1
 
 " No annoying sound on errors
 set noerrorbells
