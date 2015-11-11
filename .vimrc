@@ -24,12 +24,6 @@ set cmdheight=1
 " A buffer becomes hidden when it is abandoned
 set hid
 
-" Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
