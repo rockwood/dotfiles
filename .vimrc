@@ -232,6 +232,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
 Plug 'itchyny/lightline.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -292,3 +293,8 @@ let g:lightline = {
 \   }
 \ }
 
+"""""""""""""""""""""""""""""
+" Emmet
+"""""""""""""""""""""""""""""
+
+let g:user_emmet_leader_key = '<C-E>'
