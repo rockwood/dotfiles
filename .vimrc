@@ -233,6 +233,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
 
