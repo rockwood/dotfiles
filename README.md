@@ -66,13 +66,16 @@ Helpful if you're tweeking your iTerm theme
 
     bash script/colors
 
-## Author |
-[![twitter/kevinrockwood](http://www.gravatar.com/avatar/180276ea8f2063445af08593e20f53ec?s=70)](http://twitter.com/kevinrockwood
-"Follow @kevinrockwood on Twitter") | |---| | [Kevin Rockwood](http://rockwood.me/) |
+## Author
+
+| [![twitter/kevinrockwood](http://www.gravatar.com/avatar/180276ea8f2063445af08593e20f53ec?s=70)](http://twitter.com/kevinrockwood "Follow @kevinrockwood on Twitter") |
+|---|
+| [Kevin Rockwood](http://rockwood.me/) |
 
 
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias
-"Follow @mathias on Twitter") | |---| | [Mathias Bynens](http://mathiasbynens.be/) |
+| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
+|---|
+| [Mathias Bynens](http://mathiasbynens.be/) |
 
 ## Thanks to…
 
