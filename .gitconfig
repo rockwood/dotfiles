@@ -21,8 +21,6 @@
   remotes = remote -v
   # Interactive rebase with the given number of latest commits
   reb = "!r() { git rebase -i HEAD~$1; }; r"
-  # Open SourceTree
-  tree = "!open -a SourceTree ."
   # Pull with rebase
   tug = pull --rebase
   # Delete all merged branches
