@@ -1,9 +1,6 @@
 # Add homebrew and `~/bin` to the `$PATH`
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
-# Add rbenv autocompletion
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -40,3 +37,10 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+
+# ASDF version manager: https://github.com/asdf-vm/asdf
+if [ -d "$HOME/.asdf/" ]; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
