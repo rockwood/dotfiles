@@ -1,3 +1,6 @@
+# Spacemacs
+alias spacemacs='open -a /Applications/Emacs.app $1'
+
 # VimR
 alias vimr="open -a VimR"
 
