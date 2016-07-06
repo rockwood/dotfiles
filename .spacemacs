@@ -259,7 +259,10 @@ layers configuration. You are free to put any user code."
   (setq-default
     fci-rule-color "#444444"
     fci-rule-column 100
-    ))
+    powerline-default-separator 'bar ;; Remove this when separator colors are fixed #
+    )
+  (spaceline-compile) ;; Remove this when separator colors are fixed #4955
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
