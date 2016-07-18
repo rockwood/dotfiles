@@ -1,5 +1,14 @@
-# Add homebrew and `~/bin` to the `$PATH`
-export PATH="/usr/local/bin:$HOME/bin:$PATH"
+# ASDF version manager: https://github.com/asdf-vm/asdf
+if [ -d "$HOME/.asdf/" ]; then
+  source $HOME/.asdf/asdf.sh
+  source $HOME/.asdf/completions/asdf.bash
+fi
+
+# Add homebrew bin path
+export PATH="/usr/local/bin:$PATH"
+
+# Add home bin path
+export PATH="$HOME/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -37,10 +46,3 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-
-# ASDF version manager: https://github.com/asdf-vm/asdf
-if [ -d "$HOME/.asdf/" ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
-
