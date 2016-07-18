@@ -242,9 +242,10 @@ any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (setq-default
     neo-theme 'nerd
+    tab-width 2
     js2-basic-offset 2
     js-indent-level 2
-    tab-width 2
+    sh-basic-offset 2
     web-mode-markup-indent-offset 2
     web-mode-css-indent-offset 2
     web-mode-code-indent-offset 2
