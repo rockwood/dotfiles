@@ -21,6 +21,7 @@
      auto-completion
      spell-checking
      shell
+     ranger
 
      ;; Tools:
      git
@@ -246,6 +247,7 @@ in `dotspacemacs/user-config'."
     neo-theme 'nerd
     create-lockfiles nil
     magit-repository-directories '("~/devel/")
+    ranger-cleanup-on-disable t
     ))
 
 (defun dotspacemacs/user-config ()
