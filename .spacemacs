@@ -240,15 +240,10 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+  (set-indent-offset 2)
+
   (setq-default
     neo-theme 'nerd
-    tab-width 2
-    js2-basic-offset 2
-    js-indent-level 2
-    sh-basic-offset 2
-    web-mode-markup-indent-offset 2
-    web-mode-css-indent-offset 2
-    web-mode-code-indent-offset 2
     create-lockfiles nil
     magit-repository-directories '("~/devel/")
     ))
@@ -281,3 +276,16 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+
+(defun set-indent-offset (n)
+  (setq
+    c-basic-offset n
+    coffee-tab-width n
+    javascript-indent-level n
+    js-indent-level n
+    js2-basic-offset n
+    web-mode-markup-indent-offset n
+    web-mode-css-indent-offset n
+    web-mode-code-indent-offset n
+    css-indent-offset n
+  ))
