@@ -24,3 +24,7 @@ export GREP_OPTIONS="--color=auto"
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# Cache Nerves Systems
+export NERVES_SYSTEM_CACHE=local
+
