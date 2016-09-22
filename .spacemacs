@@ -245,6 +245,7 @@ in `dotspacemacs/user-config'."
   (set-indent-offset 2)
 
   (setq-default
+    ns-pop-up-frames nil
     neo-theme 'nerd
     create-lockfiles nil
     magit-repository-directories '("~/devel/")
