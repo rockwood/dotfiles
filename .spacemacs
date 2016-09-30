@@ -29,6 +29,7 @@
      org
      dash
      version-control
+     restclient
 
      ;; Languages:
      emacs-lisp
