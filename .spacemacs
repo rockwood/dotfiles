@@ -299,6 +299,7 @@ in `dotspacemacs/user-config'."
     create-lockfiles nil
     magit-repository-directories '("~/devel/")
     ranger-cleanup-on-disable t
+    ivy-re-builders-alist '((t . ivy--regex-fuzzy))
     ))
 
 (defun dotspacemacs/user-config ()
