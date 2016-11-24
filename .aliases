@@ -1,6 +1,6 @@
 # Spacemacs
-alias sp='open -a /Applications/Emacs.app $1'
-alias spc='emacsclient'
+alias emg='open -a /Applications/Emacs.app $1'
+alias emc='emacsclient'
 
 # Bundler
 alias bi="bundle --path vendor"
