@@ -230,7 +230,7 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-vinegar'
 Plug 'kien/ctrlp.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
@@ -239,19 +239,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
-
-"""""""""""""""""""""""""""""
-" NERDTree
-"""""""""""""""""""""""""""""
-
-" Map to ctrl n
-map <C-n> :NERDTreeToggle<CR>
-
-" Open Nerdtree when vim is opened
-autocmd vimenter * if !argc() | NERDTree | endif
-
-" Close vim if only NERDTree is left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 """""""""""""""""""""""""""""
 " Ctrlp
