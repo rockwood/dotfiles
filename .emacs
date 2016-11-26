@@ -131,4 +131,14 @@
     "pf" 'counsel-projectile-find-file
     "pa" 'counsel-projectile-ag))
 
+(use-package drag-stuff
+  :diminish drag-stuff-mode
+  :init
+  (drag-stuff-global-mode 1)
+  :bind (:map drag-stuff-mode-map
+	      ("s-k"      . drag-stuff-up)
+	      ("s-j"      . drag-stuff-down)
+	      ("s-l"      . drag-stuff-right)
+	      ("s-h"      . drag-stuff-left)))
+
 ;; Emacs config goes here:
