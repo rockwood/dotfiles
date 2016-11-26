@@ -45,6 +45,8 @@
 
 (scroll-bar-mode -1)
 
+(global-linum-mode 1)
+
 (set-frame-font "Monaco 14" nil t)
 
 (add-to-list 'default-frame-alist
