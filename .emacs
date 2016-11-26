@@ -1,9 +1,13 @@
-;; TODO 
+;; TODO
 ;;
 ;;   * Don't create tmp files
 ;;   * Projectile
 ;;   * Ivy/Swiper/Counsel config
 ;;   * Dired
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Config
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
 
@@ -19,10 +23,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; use-package - https://github.com/jwiegley/use-package
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;; Install use-package - https://github.com/jwiegley/use-package
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
@@ -31,6 +32,17 @@
 
 ;; Default to `:ensure t` to always install packages at startup.
 (setq use-package-always-ensure t)
+
+;; Use one folder for all save/history/cache files
+(defconst my-savefile-dir (expand-file-name "savefile" user-emacs-directory))
+(unless (file-exists-p my-savefile-dir)
+  (make-directory my-savefile-dir))
+
+;; Store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text and UI
