@@ -73,12 +73,26 @@
   :init (setq powerline-default-separator 'bar))
 
 (use-package evil
-  :init (evil-mode t)
+  :ensure t
+  :demand t
+  :init
+  (evil-mode t)
+  :config
+  (use-package evil-leader
+    :ensure t
+    :config
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key
+      "s" 'save-buffer
+      "k" 'kill-this-buffer
+      "d" 'delete-window)
+    (global-evil-leader-mode))
   :bind (:map evil-normal-state-map
-	      ("C-h" . evil-window-left)
-	      ("C-j" . evil-window-down)
-	      ("C-k" . evil-window-up)
-	      ("C-l" . evil-window-right)))
+              ("C-h" . evil-window-left)
+              ("C-j" . evil-window-down)
+              ("C-k" . evil-window-up)
+              ("C-l" . evil-window-right)))
+
 
 (use-package swiper)
 
