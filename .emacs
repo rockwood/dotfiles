@@ -1,10 +1,3 @@
-;; TODO
-;;
-;;   * Don't create tmp files
-;;   * Projectile
-;;   * Ivy/Swiper/Counsel config
-;;   * Dired
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,7 +94,6 @@
   (setq whitespace-line-column 100)
   (setq whitespace-action '(auto-cleanup))
   (setq whitespace-style '(face tabs empty trailing lines-tail)))
-
 
 (use-package swiper)
 
