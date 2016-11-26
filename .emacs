@@ -98,13 +98,42 @@
 (use-package swiper)
 
 (use-package ivy
+  :ensure t
+  :demand t
+  :diminish ivy-mode
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-fuzzy)))
+  (evil-leader/set-key "b" 'ivy-switch-buffer)
   :config
   (ivy-mode 1)
-  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
-  (setq ivy-use-virtual-buffers t)
-  ;; number of result lines to display
-  (setq ivy-height 10))
-  :diminish (ivy-mode . "")
-  :bind (:map ivy-mode-map
-	      ("C-'" . ivy-avy))
+  :bind (:map ivy-minibuffer-map
+	 ("TAB"      . ivy-alt-done)
+	 ("<escape>" . minibuffer-keyboard-quit)
+	 ("C-j"      . ivy-next-line)
+	 ("C-k"      . ivy-previous-line)))
 
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :init
+  (setq projectile-cache-file (expand-file-name  "projectile.cache" my-savefile-dir))
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-savefile-dir))
+  (setq projectile-completion-system 'ivy)
+  :config
+  (projectile-global-mode))
+
+(use-package counsel-projectile
+  :ensure t
+  :init
+  (defun counsel-projectile-ag ()
+    (interactive)
+    (counsel-ag nil (projectile-project-root)))
+  (evil-leader/set-key
+    "pp" 'counsel-projectile-switch-project
+    "pf" 'counsel-projectile-find-file
+    "pa" 'counsel-projectile-ag))
+
+;; Emacs config goes here:
