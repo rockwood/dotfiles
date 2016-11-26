@@ -66,13 +66,10 @@
   :init (setq powerline-default-separator 'bar))
 
 (use-package evil
-  :ensure t
-  :demand t
   :init
   (evil-mode t)
   :config
   (use-package evil-leader
-    :ensure t
     :config
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
@@ -98,8 +95,6 @@
 (use-package swiper)
 
 (use-package ivy
-  :ensure t
-  :demand t
   :diminish ivy-mode
   :init
   (setq ivy-use-virtual-buffers t)
@@ -116,7 +111,6 @@
 	 ("C-k"      . ivy-previous-line)))
 
 (use-package projectile
-  :ensure t
   :diminish projectile-mode
   :init
   (setq projectile-cache-file (expand-file-name  "projectile.cache" my-savefile-dir))
@@ -126,7 +120,6 @@
   (projectile-global-mode))
 
 (use-package counsel-projectile
-  :ensure t
   :init
   (defun counsel-projectile-ag ()
     (interactive)
