@@ -93,6 +93,15 @@
               ("C-k" . evil-window-up)
               ("C-l" . evil-window-right)))
 
+(use-package whitespace
+  :diminish whitespace-mode
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  (setq whitespace-line-column 100)
+  (setq whitespace-action '(auto-cleanup))
+  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+
 
 (use-package swiper)
 
