@@ -141,4 +141,10 @@
 	      ("s-l"      . drag-stuff-right)
 	      ("s-h"      . drag-stuff-left)))
 
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :init (global-undo-tree-mode)
+  (evil-leader/set-key
+    "u" 'undo-tree-visualize))
+
 ;; Emacs config goes here:
