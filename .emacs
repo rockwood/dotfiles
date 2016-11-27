@@ -118,16 +118,25 @@
   (setq projectile-cache-file (expand-file-name  "projectile.cache" my-savefile-dir))
   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-savefile-dir))
   (setq projectile-completion-system 'ivy)
+  (evil-leader/set-key
+    "pt" 'projectile-toggle-between-implementation-and-test
+    "pT" 'projectile-find-test-file
+    "pP" 'projectile-test-project
+    "pk" 'projectile-kill-buffers
+    "pr" 'projectile-replace
+    "pk" 'projectile-kill-buffers
+    "pj" 'projectile-find-tag
+    "pR" 'projectile-regenerate-tags
+    "pi" 'projectile-invalidate-cache)
   :config
   (projectile-global-mode))
 
 (use-package counsel-projectile
   :init
-  (defun counsel-projectile-ag ()
-    (interactive)
-    (counsel-ag nil (projectile-project-root)))
   (evil-leader/set-key
     "pp" 'counsel-projectile-switch-project
+    "pb" 'counsel-projectile-switch-to-buffer
+    "pd" 'counsel-projectile-find-dir
     "pf" 'counsel-projectile-find-file
     "pa" 'counsel-projectile-ag))
 
