@@ -94,7 +94,8 @@
   (setq whitespace-action '(auto-cleanup))
   (setq whitespace-style '(face tabs empty trailing lines-tail)))
 
-(use-package swiper)
+(use-package swiper
+  :bind ("C-s" . swiper))
 
 (use-package ivy
   :diminish ivy-mode
