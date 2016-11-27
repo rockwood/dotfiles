@@ -60,7 +60,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package monokai-theme
-  :config (load-theme 'monokai t))
+  :config (load-theme 'monokai 1))
 
 (use-package spaceline-config
   :ensure spaceline
@@ -69,7 +69,7 @@
 
 (use-package evil
   :init
-  (evil-mode t)
+  (evil-mode 1)
   :config
   (use-package evil-leader
     :config
