@@ -55,8 +55,13 @@
 ;; Disable the bell
 (setq ring-bell-function 'ignore)
 
+;; Tabs
+(setq-default
+ indent-tabs-mode nil
+ tab-width 2)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Packages
+;; Base Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package monokai-theme
@@ -155,5 +160,19 @@
   :init (global-undo-tree-mode)
   (evil-leader/set-key
     "u" 'undo-tree-visualize))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Language Packages
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package markdown-mode)
+
+(use-package web-mode
+  :init
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-style-padding 2
+        web-mode-script-padding 2))
 
 ;; Emacs config goes here:
