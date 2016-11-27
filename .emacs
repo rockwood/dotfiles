@@ -100,13 +100,12 @@
 (use-package ivy
   :diminish ivy-mode
   :init
-  (setq ivy-use-virtual-buffers t)
+  (ivy-mode 1)
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-re-builders-alist
         '((t . ivy--regex-fuzzy)))
   (evil-leader/set-key "b" 'ivy-switch-buffer)
   :config
-  (ivy-mode 1)
   :bind (:map ivy-minibuffer-map
 	 ("TAB"      . ivy-alt-done)
 	 ("<escape>" . minibuffer-keyboard-quit)
