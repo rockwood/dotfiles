@@ -6,9 +6,9 @@
 
 (setq package-enable-at-startup nil
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("org" . "http://orgmode.org/elpa/")
-			 ("melpa" . "https://melpa.org/packages/")
-			 ("melpa-stable" . "http://stable.melpa.org/packages/")))
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "http://stable.melpa.org/packages/")))
 
 (package-initialize)
 
@@ -78,12 +78,12 @@
   :config
   (use-package evil-leader
     :config
+    (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       "s" 'save-buffer
       "k" 'kill-this-buffer
-      "d" 'delete-window)
-    (global-evil-leader-mode))
+      "d" 'delete-window))
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
               ("C-j" . evil-window-down)
@@ -107,15 +107,15 @@
   :init
   (ivy-mode 1)
   (setq ivy-initial-inputs-alist nil)
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy)))
-  (evil-leader/set-key "b" 'ivy-switch-buffer)
+  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (evil-leader/set-key
+    "b" 'ivy-switch-buffer)
   :config
   :bind (:map ivy-minibuffer-map
-	 ("TAB"      . ivy-alt-done)
-	 ("<escape>" . minibuffer-keyboard-quit)
-	 ("C-j"      . ivy-next-line)
-	 ("C-k"      . ivy-previous-line)))
+              ("TAB"      . ivy-alt-done)
+              ("<escape>" . minibuffer-keyboard-quit)
+              ("C-j"      . ivy-next-line)
+              ("C-k"      . ivy-previous-line)))
 
 (use-package projectile
   :diminish projectile-mode
@@ -150,10 +150,10 @@
   :init
   (drag-stuff-global-mode 1)
   :bind (:map drag-stuff-mode-map
-	      ("s-k"      . drag-stuff-up)
-	      ("s-j"      . drag-stuff-down)
-	      ("s-l"      . drag-stuff-right)
-	      ("s-h"      . drag-stuff-left)))
+              ("s-k" . drag-stuff-up)
+              ("s-j" . drag-stuff-down)
+              ("s-h" . drag-stuff-left)
+              ("s-l" . drag-stuff-right)))
 
 (use-package undo-tree
   :diminish undo-tree-mode
