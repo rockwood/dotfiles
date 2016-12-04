@@ -134,14 +134,21 @@
               ("C-k" . evil-window-up)
               ("C-l" . evil-window-right)))
 
+(use-package buffer-move
+  :bind (("C-M-h" . buf-move-left)
+         ("C-M-j" . buf-move-down)
+         ("C-M-k" . buf-move-up)
+         ("C-M-l" . buf-move-right)))
+
 (use-package whitespace
   :diminish whitespace-mode
   :init
-  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-    (add-hook hook #'whitespace-mode))
-  (setq whitespace-line-column 100)
-  (setq whitespace-action '(auto-cleanup))
-  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+  (global-whitespace-mode 1)
+  (setq whitespace-line-column 100
+        whitespace-action '(auto-cleanup)
+        whitespace-style '(face tabs empty trailing lines-tail))
+  (custom-set-faces '(whitespace-trailing ((t (:background "beige"))))
+                    '(whitespace-empty ((t (:background "beige"))))))
 
 (use-package swiper
   :bind ("C-s" . swiper))
