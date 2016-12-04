@@ -51,24 +51,54 @@
 ;; Text and UI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(tool-bar-mode -1)
-
-(scroll-bar-mode -1)
-
-(global-linum-mode 1)
-
+;; Font
 (set-frame-font "Monaco 14" nil t)
-
 (add-to-list 'default-frame-alist
              '(font . "Monaco 14"))
 
-;; Disable the bell
-(setq ring-bell-function 'ignore)
+;; GUI
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (scroll-bar-mode -1)
+  (tooltip-mode -1)
+  (tool-bar-mode -1)
+  (mouse-wheel-mode t)
+  (blink-cursor-mode -1))
 
-;; Tabs
-(setq-default
- indent-tabs-mode nil
- tab-width 2)
+;; Startup
+(setq inhibit-startup-screen t
+      ring-bell-function 'ignore)
+
+;; Startup with a fill frame window
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Vim style scrolling
+(setq scroll-step 1
+      scroll-conservatively 10000
+      mouse-wheel-follow-mouse 't
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(2))
+
+;; Tabs and Spaces
+(setq-default indent-tabs-mode nil
+              tab-width 2)
+
+;; Show line numbers
+(global-linum-mode 1)
+
+;; Highlight matching parentheses
+(show-paren-mode 1)
+
+;; Fringe
+(fringe-mode '(4 . 0))
+(set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
+
+;; Buffers
+(setq uniquify-buffer-name-style 'forward
+      truncate-partial-width-windows nil)
+
+;; Enhanded dired
+(require 'dired-x)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Base Packages
