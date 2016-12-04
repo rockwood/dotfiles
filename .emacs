@@ -7,7 +7,6 @@
 (setq package-enable-at-startup nil
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "http://stable.melpa.org/packages/")))
 
 (package-initialize)
@@ -27,7 +26,7 @@
 (setq use-package-always-ensure t)
 
 ;; Use one folder for all save/history/cache files
-(defconst my-savefile-dir (expand-file-name "savefile" user-emacs-directory))
+(defconst my-savefile-dir (expand-file-name "backups" user-emacs-directory))
 (unless (file-exists-p my-savefile-dir)
   (make-directory my-savefile-dir))
 
@@ -36,6 +35,12 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; set keys for MacOS
+(setq mac-command-modifier 'super)
+(setq mac-option-modifier 'meta)
+(setq mac-control-modifier 'control)
+(setq ns-function-modifier 'hyper)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text and UI
