@@ -217,6 +217,15 @@
   (evil-leader/set-key
     "u" 'undo-tree-visualize))
 
+(use-package company
+  :diminish company-mode
+  :commands company-complete
+  :init
+  (global-company-mode)
+  (define-key company-active-map (kbd "TAB") 'company-complete)
+  (define-key company-active-map (kbd "C-j") 'company-select-next)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
