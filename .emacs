@@ -26,21 +26,21 @@
 (setq use-package-always-ensure t)
 
 ;; Use one folder for all save/history/cache files
-(defconst my-savefile-dir (expand-file-name "backups" user-emacs-directory))
-(unless (file-exists-p my-savefile-dir)
-  (make-directory my-savefile-dir))
+(defconst my-backup-dir (expand-file-name "backups" user-emacs-directory))
+(unless (file-exists-p my-backup-dir)
+  (make-directory my-backup-dir))
 
-;; Store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; Backup and lockfiles
+(setq create-lockfiles nil
+      backup-directory-alist `((".*" . ,my-backup-dir))
+      auto-save-file-name-transforms `((".*" ,my-backup-dir t)))
 
-;; set keys for MacOS
-(setq mac-command-modifier 'super)
-(setq mac-option-modifier 'meta)
-(setq mac-control-modifier 'control)
-(setq ns-function-modifier 'hyper)
+;; Set keys for MacOS
+(setq mac-command-modifier 'super
+      mac-option-modifier 'meta
+      mac-control-modifier 'control
+      ns-function-modifier 'hyper)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text and UI
