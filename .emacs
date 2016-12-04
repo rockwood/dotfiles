@@ -126,8 +126,12 @@
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       "s" 'save-buffer
-      "k" 'kill-this-buffer
-      "d" 'delete-window))
+      "d" 'dired-jump
+      "bk" 'kill-this-buffer
+      "wm" 'maximize-window
+      "w=" 'balance-windows
+      "wk" 'delete-window
+      "wr" 'window-configuration-to-register))
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
               ("C-j" . evil-window-down)
@@ -160,7 +164,7 @@
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (evil-leader/set-key
-    "b" 'ivy-switch-buffer)
+    "bb" 'ivy-switch-buffer)
   :config
   :bind (:map ivy-minibuffer-map
               ("TAB"      . ivy-alt-done)
@@ -171,8 +175,8 @@
 (use-package projectile
   :diminish projectile-mode
   :init
-  (setq projectile-cache-file (expand-file-name  "projectile.cache" my-savefile-dir))
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-savefile-dir))
+  (setq projectile-cache-file (expand-file-name  "projectile.cache" my-backup-dir))
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-backup-dir))
   (setq projectile-completion-system 'ivy)
   (evil-leader/set-key
     "pt" 'projectile-toggle-between-implementation-and-test
@@ -208,7 +212,8 @@
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :init (global-undo-tree-mode)
+  :init
+  (global-undo-tree-mode)
   (evil-leader/set-key
     "u" 'undo-tree-visualize))
 
