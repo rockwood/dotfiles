@@ -104,8 +104,12 @@
 ;; Base Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package monokai-theme
-  :config (load-theme 'monokai 1))
+(use-package seoul256-theme
+  :config
+  (setq seoul256-background 233)
+  (load-theme 'seoul256 1)
+  (custom-theme-set-faces 'seoul256
+                          '(fringe ((t (:background "#252525"))))))
 
 (use-package spaceline-config
   :ensure spaceline
