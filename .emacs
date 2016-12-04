@@ -226,4 +226,13 @@
         web-mode-style-padding 2
         web-mode-script-padding 2))
 
+(use-package js2-mode
+  :mode "\\.js\\'"
+  :commands js2-mode
+  :init
+  (progn
+    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2
+                                              js2-strict-trailing-comma-warning nil
+                                              js2-warn-about-unused-function-arguments t)))))
+
 ;; Emacs config goes here:
