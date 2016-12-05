@@ -90,7 +90,7 @@
 (show-paren-mode 1)
 
 ;; Fringe
-(fringe-mode '(4 . 0))
+(fringe-mode '(4 . 4))
 (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
 
 ;; Buffers
