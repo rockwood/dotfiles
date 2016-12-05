@@ -238,6 +238,9 @@
 ;; Language Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package alchemist
+  :commands alchemist-mode)
+
 (use-package markdown-mode)
 
 (use-package web-mode
