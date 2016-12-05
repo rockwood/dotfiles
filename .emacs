@@ -116,6 +116,11 @@
 (use-package evil
   :init
   (evil-mode 1)
+  :bind (:map evil-normal-state-map
+              ("C-h" . evil-window-left)
+              ("C-j" . evil-window-down)
+              ("C-k" . evil-window-up)
+              ("C-l" . evil-window-right))
   :config
   (use-package evil-leader
     :config
@@ -129,11 +134,12 @@
       "w=" 'balance-windows
       "wk" 'delete-window
       "wr" 'window-configuration-to-register))
-  :bind (:map evil-normal-state-map
-              ("C-h" . evil-window-left)
-              ("C-j" . evil-window-down)
-              ("C-k" . evil-window-up)
-              ("C-l" . evil-window-right)))
+  (use-package evil-commentary
+    :diminish commentary-mode
+    :config
+    (evil-commentary-mode)
+    (evil-leader/set-key
+      ";" 'evil-commentary)))
 
 (use-package buffer-move
   :bind (("C-M-h" . buf-move-left)
