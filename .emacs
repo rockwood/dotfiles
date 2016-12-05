@@ -97,9 +97,6 @@
 (setq uniquify-buffer-name-style 'forward
       truncate-partial-width-windows nil)
 
-;; Enhanded dired
-(require 'dired-x)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Base Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -153,6 +150,11 @@
         whitespace-style '(face tabs empty trailing lines-tail))
   (custom-set-faces '(whitespace-trailing ((t (:background "beige"))))
                     '(whitespace-empty ((t (:background "beige"))))))
+
+(use-package dired-x
+  :ensure nil
+  :config
+  (put 'dired-find-alternate-file 'disabled nil))
 
 (use-package swiper
   :bind ("C-s" . swiper))
