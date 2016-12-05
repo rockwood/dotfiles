@@ -148,14 +148,14 @@
          ("C-M-l" . buf-move-right)))
 
 (use-package whitespace
-  :diminish whitespace-mode
+  :diminish global-whitespace-mode
   :init
   (global-whitespace-mode 1)
   (setq whitespace-line-column 100
         whitespace-action '(auto-cleanup)
         whitespace-style '(face tabs empty trailing lines-tail))
-  (custom-set-faces '(whitespace-trailing ((t (:background "beige"))))
-                    '(whitespace-empty ((t (:background "beige"))))))
+  (custom-set-faces '(whitespace-trailing ((t (:background "Grey16"))))
+                    '(whitespace-empty ((t (:background "Grey16"))))))
 
 (use-package dired-x
   :ensure nil
