@@ -135,7 +135,7 @@
       "wk" 'delete-window
       "wr" 'window-configuration-to-register))
   (use-package evil-commentary
-    :diminish commentary-mode
+    :diminish evil-commentary-mode
     :config
     (evil-commentary-mode)
     (evil-leader/set-key
