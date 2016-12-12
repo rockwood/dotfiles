@@ -169,8 +169,9 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (setq ivy-initial-inputs-alist nil
+        ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                                (t . ivy--regex-fuzzy)))
   (evil-leader/set-key
     "bb" 'ivy-switch-buffer)
   :config
