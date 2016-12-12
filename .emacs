@@ -128,8 +128,8 @@
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       "s" 'save-buffer
-      "d" 'dired-jump
       "bk" 'kill-this-buffer
+      "bm" 'buffer-menu
       "wm" 'maximize-window
       "w=" 'balance-windows
       "wk" 'delete-window
@@ -161,6 +161,9 @@
   :ensure nil
   :config
   (put 'dired-find-alternate-file 'disabled nil))
+  :init
+  (evil-leader/set-key
+    "dd" 'dired-jump)
 
 (use-package swiper
   :bind ("C-s" . swiper))
