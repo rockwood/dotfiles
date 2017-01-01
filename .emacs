@@ -252,6 +252,16 @@
   (evil-leader/set-key
     "ll" 'linum-relative-toggle))
 
+(use-package magit
+  :config
+  (use-package evil-magit)
+  :init
+  (evil-leader/set-key
+    "mm" 'magit-status))
+
+(use-package rainbow-delimiters
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
