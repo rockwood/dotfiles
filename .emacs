@@ -300,4 +300,10 @@
   :init
   (setq-default css-indent-offset 2))
 
+(use-package rainbow-mode
+  :diminish rainbow-mode
+  :init
+  (dolist (hooks '(css-mode-hook html-mode-hook scss-mode-hook))
+    (add-hook hooks 'rainbow-mode)))
+
 ;; Emacs config goes here:
