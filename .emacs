@@ -135,12 +135,17 @@
       "w=" 'balance-windows
       "wk" 'delete-window
       "wr" 'window-configuration-to-register))
+
   (use-package evil-commentary
     :diminish evil-commentary-mode
     :config
     (evil-commentary-mode)
     (evil-leader/set-key
-      ";" 'evil-commentary)))
+      ";" 'evil-commentary))
+
+  (use-package evil-surround
+    :init
+    (global-evil-surround-mode 1)))
 
 (use-package buffer-move
   :bind (("C-M-h" . buf-move-left)
