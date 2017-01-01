@@ -275,19 +275,29 @@
 
 (use-package web-mode
   :init
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2
-        web-mode-style-padding 2
-        web-mode-script-padding 2))
+  (defun my-web-mode-hook ()
+    (setq-default indent-tabs-mode nil
+          web-mode-markup-indent-offset 2
+          web-mode-css-indent-offset 2
+          web-mode-code-indent-offset 2
+          web-mode-style-padding 2
+          web-mode-script-padding 2
+          web-mode-enable-current-element-highlight t))
+  (add-hook 'web-mode-hook  'my-web-mode-hook))
 
 (use-package js2-mode
   :mode "\\.js\\'"
   :commands js2-mode
   :init
-  (progn
-    (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2
-                                              js2-strict-trailing-comma-warning nil
-                                              js2-warn-about-unused-function-arguments t)))))
+  (defun my-js2-mode-hook ()
+    (setq js2-basic-offset 2
+          js2-strict-trailing-comma-warning nil
+          js2-warn-about-unused-function-arguments t))
+  (add-hook 'js2-mode-hook 'my-js2-mode-hook))
+
+(use-package css-mode
+  :commands css-mode
+  :init
+  (setq-default css-indent-offset 2))
 
 ;; Emacs config goes here:
