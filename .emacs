@@ -306,4 +306,6 @@
   (dolist (hooks '(css-mode-hook html-mode-hook scss-mode-hook))
     (add-hook hooks 'rainbow-mode)))
 
+(use-package fish-mode)
+
 ;; Emacs config goes here:
