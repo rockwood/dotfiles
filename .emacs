@@ -148,10 +148,10 @@
     (global-evil-surround-mode 1)))
 
 (use-package buffer-move
-  :bind (("C-M-h" . buf-move-left)
-         ("C-M-j" . buf-move-down)
-         ("C-M-k" . buf-move-up)
-         ("C-M-l" . buf-move-right)))
+  :bind (("C-S-h" . buf-move-left)
+         ("C-S-j" . buf-move-down)
+         ("C-S-k" . buf-move-up)
+         ("C-S-l" . buf-move-right)))
 
 (use-package whitespace
   :diminish global-whitespace-mode
