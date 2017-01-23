@@ -274,6 +274,8 @@
 (use-package markdown-mode)
 
 (use-package web-mode
+  :mode (("\\.eex?\\'" . web-mode)
+         ("\\.erb\\'" . web-mode))
   :init
   (defun my-web-mode-hook ()
     (setq-default indent-tabs-mode nil
