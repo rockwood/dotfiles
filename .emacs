@@ -269,7 +269,6 @@
 (use-package alchemist
   :commands alchemist-mode)
 
-(use-package elm-mode)
 
 (use-package markdown-mode)
 
