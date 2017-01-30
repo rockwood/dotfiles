@@ -117,31 +117,30 @@
 (use-package evil
   :init
   (evil-mode 1)
+
+  ;; My leader key map
+  (bind-keys :map evil-normal-state-map :prefix-map rock-leader :prefix "SPC")
+
+  :bind (:map rock-leader
+              ("s" . save-buffer)
+              ("bk" . kill-this-buffer)
+              ("bm" . buffer-menu)
+              ("wm" . maximize-window)
+              ("w=" . balance-windows)
+              ("wk" . delete-window)
+              ("wr" . window-configuration-to-register))
+
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
               ("C-j" . evil-window-down)
               ("C-k" . evil-window-up)
               ("C-l" . evil-window-right))
-  :config
-  (use-package evil-leader
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key
-      "s" 'save-buffer
-      "bk" 'kill-this-buffer
-      "bm" 'buffer-menu
-      "wm" 'maximize-window
-      "w=" 'balance-windows
-      "wk" 'delete-window
-      "wr" 'window-configuration-to-register))
 
+  :config
   (use-package evil-commentary
     :diminish evil-commentary-mode
     :config
-    (evil-commentary-mode)
-    (evil-leader/set-key
-      ";" 'evil-commentary))
+    (evil-commentary-mode))
 
   (use-package evil-surround
     :init
@@ -166,10 +165,9 @@
 (use-package dired-x
   :ensure nil
   :config
-  (put 'dired-find-alternate-file 'disabled nil))
-  :init
-  (evil-leader/set-key
-    "dd" 'dired-jump)
+  (put 'dired-find-alternate-file 'disabled nil)
+  :bind (:map rock-leader
+              ("dd" . dired-jump)))
 
 (use-package swiper
   :bind ("C-s" . swiper))
@@ -181,9 +179,10 @@
   (setq ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
-  (evil-leader/set-key
-    "bb" 'ivy-switch-buffer)
-  :config
+
+  :bind (:map rock-leader
+              ("bb" . ivy-switch-buffer))
+
   :bind (:map ivy-minibuffer-map
               ("TAB"      . ivy-alt-done)
               ("<escape>" . minibuffer-keyboard-quit)
@@ -196,27 +195,26 @@
   (setq projectile-cache-file (expand-file-name  "projectile.cache" my-backup-dir))
   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-backup-dir))
   (setq projectile-completion-system 'ivy)
-  (evil-leader/set-key
-    "pt" 'projectile-toggle-between-implementation-and-test
-    "pT" 'projectile-find-test-file
-    "pP" 'projectile-test-project
-    "pk" 'projectile-kill-buffers
-    "pr" 'projectile-replace
-    "pk" 'projectile-kill-buffers
-    "pj" 'projectile-find-tag
-    "pR" 'projectile-regenerate-tags
-    "pi" 'projectile-invalidate-cache)
   :config
-  (projectile-global-mode))
+  (projectile-global-mode)
+  :bind (:map rock-leader
+              ("pt" . projectile-toggle-between-implementation-and-test)
+              ("pT" . projectile-find-test-file)
+              ("pP" . projectile-test-project)
+              ("pk" . projectile-kill-buffers)
+              ("pr" . projectile-replace)
+              ("pk" . projectile-kill-buffers)
+              ("pj" . projectile-find-tag)
+              ("pR" . projectile-regenerate-tags)
+              ("pi" . projectile-invalidate-cache)))
 
 (use-package counsel-projectile
-  :init
-  (evil-leader/set-key
-    "pp" 'counsel-projectile-switch-project
-    "pb" 'counsel-projectile-switch-to-buffer
-    "pd" 'counsel-projectile-find-dir
-    "pf" 'counsel-projectile-find-file
-    "pa" 'counsel-projectile-ag))
+  :bind (:map rock-leader
+              ("pp" . counsel-projectile-switch-project)
+              ("pb" . counsel-projectile-switch-to-buffer)
+              ("pd" . counsel-projectile-find-dir)
+              ("pf" . counsel-projectile-find-file)
+              ("pa" . counsel-projectile-ag)))
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -232,8 +230,8 @@
   :diminish undo-tree-mode
   :init
   (global-undo-tree-mode)
-  (evil-leader/set-key
-    "u" 'undo-tree-visualize))
+  :bind (:map rock-leader
+              ("u" . undo-tree-visualize)))
 
 (use-package company
   :diminish company-mode
@@ -248,16 +246,15 @@
   :config
   (progn
     (setq linum-relative-current-symbol ""))
-  :init
-  (evil-leader/set-key
-    "ll" 'linum-relative-toggle))
+  :bind (:map rock-leader
+              ("ll" . linum-relative-toggle)))
 
 (use-package magit
   :config
   (use-package evil-magit)
   :init
-  (evil-leader/set-key
-    "mm" 'magit-status))
+  :bind (:map rock-leader
+              ("mm" . magit-status)))
 
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
@@ -275,22 +272,21 @@
   :commands alchemist-mode
   :config
   (setq alchemist-iex-program-name "~/.asdf/shims/iex")
-  :init
-  (evil-leader/set-key
-    "att" 'alchemist-mix-test
-    "atb" 'alchemist-mix-test-this-buffer
-    "atp" 'alchemist-mix-test-at-point
-    "atr" 'alchemist-mix-rerun-last-test
-    "ats" 'alchemist-mix-test-stale
-    "agt" 'alchemist-project-toggle-file-and-tests
-    "agd" 'alchemist-goto-definition-at-point
-    "agg" 'alchemist-goto-jump-back
-    "amm" 'alchemist-mix
-    "amc" 'alchemist-mix-compile
-    "amr" 'alchemist-mix-run
-    "aii" 'alchemist-iex-project-run
-    "ail" 'alchemist-iex-send-current-line
-    "ais" 'alchemist-iex-send-region))
+  :bind (:map rock-leader
+              ("att" . alchemist-mix-test)
+              ("atb" . alchemist-mix-test-this-buffer)
+              ("atp" . alchemist-mix-test-at-point)
+              ("atr" . alchemist-mix-rerun-last-test)
+              ("ats" . alchemist-mix-test-stale)
+              ("agt" . alchemist-project-toggle-file-and-tests)
+              ("agd" . alchemist-goto-definition-at-point)
+              ("agg" . alchemist-goto-jump-back)
+              ("amm" . alchemist-mix)
+              ("amc" . alchemist-mix-compile)
+              ("amr" . alchemist-mix-run)
+              ("aii" . alchemist-iex-project-run)
+              ("ail" . alchemist-iex-send-current-line)
+              ("ais" . alchemist-iex-send-region)))
 
 (use-package markdown-mode)
 
