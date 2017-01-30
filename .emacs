@@ -266,9 +266,31 @@
 ;; Language Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package alchemist
-  :commands alchemist-mode)
+(use-package elixir-mode
+  :commands elixir-mode
+  :config
+  (add-hook 'elixir-mode-hook 'alchemist-mode))
 
+(use-package alchemist
+  :commands alchemist-mode
+  :config
+  (setq alchemist-iex-program-name "~/.asdf/shims/iex")
+  :init
+  (evil-leader/set-key
+    "att" 'alchemist-mix-test
+    "atb" 'alchemist-mix-test-this-buffer
+    "atp" 'alchemist-mix-test-at-point
+    "atr" 'alchemist-mix-rerun-last-test
+    "ats" 'alchemist-mix-test-stale
+    "agt" 'alchemist-project-toggle-file-and-tests
+    "agd" 'alchemist-goto-definition-at-point
+    "agg" 'alchemist-goto-jump-back
+    "amm" 'alchemist-mix
+    "amc" 'alchemist-mix-compile
+    "amr" 'alchemist-mix-run
+    "aii" 'alchemist-iex-project-run
+    "ail" 'alchemist-iex-send-current-line
+    "ais" 'alchemist-iex-send-region))
 
 (use-package markdown-mode)
 
@@ -277,7 +299,7 @@
          ("\\.erb\\'" . web-mode))
   :init
   (defun my-web-mode-hook ()
-    (setq-default indent-tabs-mode nil
+    (setq indent-tabs-mode nil
           web-mode-markup-indent-offset 2
           web-mode-css-indent-offset 2
           web-mode-code-indent-offset 2
