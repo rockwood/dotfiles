@@ -302,7 +302,8 @@
               ("ail" . alchemist-iex-send-current-line)
               ("ais" . alchemist-iex-send-region)))
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :init (setq markdown-command "multimarkdown"))
 
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
