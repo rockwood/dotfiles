@@ -304,7 +304,10 @@
               ("amr" . alchemist-mix-run)
               ("aii" . alchemist-iex-project-run)
               ("ail" . alchemist-iex-send-current-line)
-              ("ais" . alchemist-iex-send-region)))
+              ("aib" . alchemist-iex-compile-this-buffer)
+              ("ais" . alchemist-iex-send-region)
+              ("ael" . alchemist-eval-current-line)
+              ("aer" . alchemist-eval-region)))
 
 (use-package markdown-mode
   :init (setq markdown-command "multimarkdown"))
