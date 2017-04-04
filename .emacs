@@ -129,7 +129,8 @@
 (use-package spaceline-config
   :ensure spaceline
   :config (spaceline-spacemacs-theme)
-  :init (setq powerline-default-separator 'bar))
+  :init (setq spaceline-higlight-face-func 'spaceline-highlight-face-evil-state
+              powerline-default-separator 'bar))
 
 (use-package evil
   :init
