@@ -140,7 +140,9 @@
   (bind-keys :map evil-normal-state-map :prefix-map rock-leader :prefix "SPC")
 
   :bind (:map rock-leader
-              ("s" . save-buffer)
+              ("ss" . flyspell-mode)
+              ("sn" . flyspell-goto-next-error)
+              ("sc" . ispell-word)
               ("bk" . kill-this-buffer)
               ("bm" . buffer-menu)
               ("wm" . maximize-window)
@@ -264,8 +266,11 @@
   :config
   (progn
     (setq linum-relative-current-symbol ""))
+  :init
+  (linum-relative-global-mode)
+  (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
   :bind (:map rock-leader
-              ("ll" . linum-relative-toggle)))
+              ("tl" . linum-relative-toggle)))
 
 (use-package magit
   :config
