@@ -196,7 +196,8 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
-  (setq ivy-initial-inputs-alist nil
+  (setq ivy-format-function 'ivy-format-function-arrow
+        ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
 
