@@ -268,7 +268,6 @@
   (progn
     (setq linum-relative-current-symbol ""))
   :init
-  (linum-relative-global-mode)
   (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
   :bind (:map rock-leader
               ("tl" . linum-relative-toggle)))
@@ -277,6 +276,8 @@
   :config
   (use-package evil-magit)
   :init
+  (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
+  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
   :bind (:map rock-leader
               ("mm" . magit-status)))
 
