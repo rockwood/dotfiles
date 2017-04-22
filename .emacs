@@ -279,7 +279,11 @@
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
   (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
   :bind (:map rock-leader
-              ("mm" . magit-status)))
+              ("mm" . magit-status)
+              ("ml" . magit-log-current)
+              ("mbb" . magit-branch-popup)
+              ("mbc" . magit-branch-and-checkout)
+              ("mpp" . magit-pull-popup)))
 
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
