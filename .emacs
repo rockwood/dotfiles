@@ -199,6 +199,7 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
+  (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
   (setq ivy-format-function 'ivy-format-function-arrow
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
@@ -271,7 +272,6 @@
   (progn
     (setq linum-relative-current-symbol ""))
   :init
-  (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
   :bind (:map rock-leader
               ("tl" . linum-relative-toggle)))
 
