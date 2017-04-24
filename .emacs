@@ -51,6 +51,9 @@
 ;; Autoload buffers when changed
 (global-auto-revert-mode t)
 
+;; Only require `y/n` rather than `yes/no`
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text and UI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
