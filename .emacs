@@ -255,6 +255,8 @@
   :diminish undo-tree-mode
   :init
   (global-undo-tree-mode)
+  (setq undo-tree-visualizer-timestamps t
+        undo-tree-visualizer-diff t)
   :bind (:map rock-leader
               ("u" . undo-tree-visualize)))
 
