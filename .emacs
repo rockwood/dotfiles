@@ -282,7 +282,6 @@
   (use-package evil-magit)
   :init
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
-  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
   :bind (:map rock-leader
               ("mm" . magit-status)
               ("ml" . magit-log-current)
