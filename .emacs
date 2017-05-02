@@ -279,6 +279,7 @@
   :bind (:map rock-leader
               ("mm" . magit-status)
               ("ml" . magit-log-current)
+              ("mx" . magit-blame)
               ("mbb" . magit-branch-popup)
               ("mbc" . magit-branch-and-checkout)
               ("mpp" . magit-pull-popup)))
