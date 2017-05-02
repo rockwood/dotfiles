@@ -129,12 +129,6 @@
   (custom-theme-set-faces 'seoul256
                           '(fringe ((t (:background "#252525"))))))
 
-(use-package spaceline-config
-  :ensure spaceline
-  :config (spaceline-spacemacs-theme)
-  :init (setq spaceline-higlight-face-func 'spaceline-highlight-face-evil-state
-              powerline-default-separator 'bar))
-
 (use-package evil
   :init
   (evil-mode 1)
