@@ -98,7 +98,6 @@
 
 ;; Fringe
 (fringe-mode '(4 . 4))
-(set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
 
 ;; Buffers
 (setq uniquify-buffer-name-style 'forward
@@ -121,13 +120,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Base Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package seoul256-theme
-  :config
-  (setq seoul256-background 233)
-  (load-theme 'seoul256 1)
-  (custom-theme-set-faces 'seoul256
-                          '(fringe ((t (:background "#252525"))))))
 
 (use-package evil
   :init
@@ -162,6 +154,20 @@
   (use-package evil-surround
     :init
     (global-evil-surround-mode 1)))
+
+
+(use-package seoul256-theme
+  :config
+  (setq seoul256-background 233)
+  (load-theme 'seoul256 t)
+  (custom-theme-set-faces 'seoul256
+                          `(fringe              ((t (:background "#252525"))))
+                          `(mode-line           ((t (:foreground "#ffffff" :background "#333333"))))
+                          `(mode-line-buffer-id ((t (:foreground "#ffffff"))))
+                          `(mode-line-emphasis  ((t (:foreground "#dddddd" :slant italic))))
+                          `(mode-line-highlight ((t (:foreground "#ffffff"))))
+                          `(mode-line-inactive  ((t (:foreground "#666666" :background "#222222")))))
+  (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
 
 (use-package buffer-move
   :bind (("C-S-h" . buf-move-left)
