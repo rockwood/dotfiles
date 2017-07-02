@@ -155,34 +155,27 @@
     :init
     (global-evil-surround-mode 1)))
 
-
 (use-package seoul256-theme
   :config
   (setq seoul256-background 233)
   (load-theme 'seoul256 t)
   (custom-theme-set-faces 'seoul256
                           `(fringe              ((t (:background "#252525"))))
-                          `(mode-line           ((t (:foreground "#ffffff" :background "#222222"))))
-                          `(mode-line-buffer-id ((t (:foreground "#ffffff"))))
+                          `(mode-line           ((t (:foreground "#ffffff" :background "#48667E"))))
+                          `(mode-line-buffer-id ((t (:foreground "#ffffff" :background "#48667E"))))
                           `(mode-line-emphasis  ((t (:foreground "#222222" :slant italic))))
-                          `(mode-line-highlight ((t (:foreground "#ffffff"))))
+                          `(mode-line-highlight ((t (:foreground "#ffffff" :background "#48667E"))))
                           `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c")))))
   (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
 
-(use-package telephone-line
+(use-package spaceline-config
+  :ensure spaceline
   :config
-  (setq telephone-line-evil-use-short-tag t
-        telephone-line-primary-right-separator 'telephone-line-nil
-        telephone-line-primary-left-separator 'telephone-line-nil
-        telephone-line-lhs '((evil   . (telephone-line-evil-tag-segment))
-                             (accent . (telephone-line-vc-segment
-                                        telephone-line-process-segment))
-                             (nil    . (telephone-line-minor-mode-segment
-                                        telephone-line-buffer-segment)))
-        telephone-line-rhs '((nil    . (telephone-line-misc-info-segment))
-                             (accent . (telephone-line-major-mode-segment))
-                             (evil   . (telephone-line-airline-position-segment))))
-  (telephone-line-mode t))
+  (setq powerline-height 22
+        powerline-default-separator 'bar)
+  (set-face-attribute 'powerline-active2 nil :background "#222222")
+  (set-face-attribute 'powerline-inactive2 nil :background "#1c1c1c")
+  (spaceline-spacemacs-theme))
 
 (use-package buffer-move
   :bind (("C-S-h" . buf-move-left)
