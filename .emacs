@@ -126,19 +126,32 @@
   :init
   (evil-mode 1)
 
-  ;; My leader key map
-  (bind-keys :map evil-normal-state-map :prefix-map rock-leader :prefix "SPC")
+  ;; Spacemacs style leader bindings
+  (bind-keys :map evil-normal-state-map :prefix "SPC" :prefix-map rock-leader)
+  (bind-keys :map rock-leader :prefix "s" :prefix-map rock/spelling)
+  (bind-keys :map rock-leader :prefix "b" :prefix-map rock/buffers)
+  (bind-keys :map rock-leader :prefix "w" :prefix-map rock/windows)
+  (bind-keys :map rock-leader :prefix "d" :prefix-map rock/directories)
+  (bind-keys :map rock-leader :prefix "p" :prefix-map rock/projects)
+  (bind-keys :map rock-leader :prefix "a" :prefix-map rock/alchemist)
+  (bind-keys :map rock-leader :prefix "m" :prefix-map rock/magit)
+  (bind-keys :map rock-leader :prefix "h" :prefix-map rock/help)
+  (bind-keys :map rock-leader :prefix "t" :prefix-map rock/toggles)
 
-  :bind (:map rock-leader
-              ("ss" . flyspell-mode)
-              ("sn" . flyspell-goto-next-error)
-              ("sc" . ispell-word)
-              ("bk" . kill-this-buffer)
-              ("bm" . buffer-menu)
-              ("wm" . maximize-window)
-              ("w=" . balance-windows)
-              ("wk" . delete-window)
-              ("wr" . window-configuration-to-register))
+  :bind (:map rock/spelling
+              ("s" . flyspell-mode)
+              ("n" . flyspell-goto-next-error)
+              ("c" . ispell-word))
+
+  :bind (:map rock/buffers
+              ("k" . kill-this-buffer)
+              ("m" . buffer-menu))
+
+  :bind (:map rock/windows
+              ("m" . maximize-window)
+              ("=" . balance-windows)
+              ("k" . delete-window)
+              ("r" . window-configuration-to-register))
 
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
@@ -198,8 +211,8 @@
   :ensure nil
   :config
   (put 'dired-find-alternate-file 'disabled nil)
-  :bind (:map rock-leader
-              ("dd" . dired-jump)))
+  :bind (:map rock/directories
+              ("d" . dired-jump)))
 
 (use-package swiper
   :bind ("C-s" . swiper))
@@ -214,8 +227,8 @@
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
 
-  :bind (:map rock-leader
-              ("bb" . ivy-switch-buffer))
+  :bind (:map rock/buffers
+              ("b" . ivy-switch-buffer))
 
   :bind (:map ivy-minibuffer-map
               ("TAB"      . ivy-alt-done)
@@ -231,24 +244,24 @@
   (setq projectile-completion-system 'ivy)
   :config
   (projectile-global-mode)
-  :bind (:map rock-leader
-              ("pt" . projectile-toggle-between-implementation-and-test)
-              ("pT" . projectile-find-test-file)
-              ("pP" . projectile-test-project)
-              ("pk" . projectile-kill-buffers)
-              ("pr" . projectile-replace)
-              ("pk" . projectile-kill-buffers)
-              ("pj" . projectile-find-tag)
-              ("pR" . projectile-regenerate-tags)
-              ("pi" . projectile-invalidate-cache)))
+  :bind (:map rock/projects
+              ("t" . projectile-toggle-between-implementation-and-test)
+              ("T" . projectile-find-test-file)
+              ("P" . projectile-test-project)
+              ("k" . projectile-kill-buffers)
+              ("r" . projectile-replace)
+              ("k" . projectile-kill-buffers)
+              ("j" . projectile-find-tag)
+              ("R" . projectile-regenerate-tags)
+              ("i" . projectile-invalidate-cache)))
 
 (use-package counsel-projectile
-  :bind (:map rock-leader
-              ("pp" . counsel-projectile-switch-project)
-              ("pb" . counsel-projectile-switch-to-buffer)
-              ("pd" . counsel-projectile-find-dir)
-              ("pf" . counsel-projectile-find-file)
-              ("pa" . counsel-projectile-ag)))
+  :bind (:map rock/projects
+              ("p" . counsel-projectile-switch-project)
+              ("b" . counsel-projectile-switch-to-buffer)
+              ("d" . counsel-projectile-find-dir)
+              ("f" . counsel-projectile-find-file)
+              ("a" . counsel-projectile-ag)))
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -283,28 +296,34 @@
   (progn
     (setq linum-relative-current-symbol ""))
   :init
-  :bind (:map rock-leader
-              ("tl" . linum-relative-toggle)))
+  :bind (:map rock/toggles
+              ("l" . linum-relative-toggle)))
 
 (use-package magit
   :config
   (use-package evil-magit)
   :init
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
-  :bind (:map rock-leader
-              ("mm" . magit-status)
-              ("ml" . magit-log-current)
-              ("mx" . magit-blame)
-              ("mbb" . magit-branch-popup)
-              ("mbc" . magit-branch-and-checkout)
-              ("mpp" . magit-pull-popup)))
+  :bind (:map rock/magit
+              ("m" . magit-status)
+              ("l" . magit-log-current)
+              ("x" . magit-blame)
+              ("bb" . magit-branch-popup)
+              ("bc" . magit-branch-and-checkout)
+              ("pp" . magit-pull-popup)))
 
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package dash-at-point
-  :bind (:map rock-leader
-              ("hh" . dash-at-point)))
+  :bind (:map rock/help
+              ("h" . dash-at-point)))
+
+(use-package which-key
+  :diminish which-key-mode
+  :init
+  (which-key-mode)
+  (setq which-key-max-description-length 40))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
@@ -319,24 +338,24 @@
   :commands alchemist-mode
   :config
   (setq alchemist-iex-program-name "~/.asdf/shims/iex")
-  :bind (:map rock-leader
-              ("att" . alchemist-mix-test)
-              ("atb" . alchemist-mix-test-this-buffer)
-              ("atp" . alchemist-mix-test-at-point)
-              ("atr" . alchemist-mix-rerun-last-test)
-              ("ats" . alchemist-mix-test-stale)
-              ("agt" . alchemist-project-toggle-file-and-tests)
-              ("agd" . alchemist-goto-definition-at-point)
-              ("agg" . alchemist-goto-jump-back)
-              ("amm" . alchemist-mix)
-              ("amc" . alchemist-mix-compile)
-              ("amr" . alchemist-mix-run)
-              ("aii" . alchemist-iex-project-run)
-              ("ail" . alchemist-iex-send-current-line)
-              ("aib" . alchemist-iex-compile-this-buffer)
-              ("ais" . alchemist-iex-send-region)
-              ("ael" . alchemist-eval-current-line)
-              ("aer" . alchemist-eval-region)))
+  :bind (:map rock/alchemist
+              ("tt" . alchemist-mix-test)
+              ("tb" . alchemist-mix-test-this-buffer)
+              ("tp" . alchemist-mix-test-at-point)
+              ("tr" . alchemist-mix-rerun-last-test)
+              ("ts" . alchemist-mix-test-stale)
+              ("gt" . alchemist-project-toggle-file-and-tests)
+              ("gd" . alchemist-goto-definition-at-point)
+              ("gg" . alchemist-goto-jump-back)
+              ("mm" . alchemist-mix)
+              ("mc" . alchemist-mix-compile)
+              ("mr" . alchemist-mix-run)
+              ("ii" . alchemist-iex-project-run)
+              ("il" . alchemist-iex-send-current-line)
+              ("ib" . alchemist-iex-compile-this-buffer)
+              ("is" . alchemist-iex-send-region)
+              ("el" . alchemist-eval-current-line)
+              ("er" . alchemist-eval-region)))
 
 (use-package markdown-mode
   :init (setq markdown-command "multimarkdown"))
