@@ -1,4 +1,0 @@
-exit
-(+ 1 2 3 4 5)
-exit
-(load-file "bob_test.clj")
