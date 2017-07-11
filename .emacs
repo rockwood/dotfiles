@@ -88,7 +88,8 @@
 
 ;; Tabs and Spaces
 (setq-default indent-tabs-mode nil
-              tab-width 2)
+              tab-width 2
+              fill-column 100)
 
 ;; Show line numbers
 (global-linum-mode 1)
