@@ -1,24 +1,15 @@
-# Rockwood's dotfiles.
-
-Based on [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles.git)
+# Rockwood's dotfiles
 
 ## Installation
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/devel/dotfiles`) The bootstrapper script will
-pull in the latest version (including submodules) and copy the files to your home folder. Vim plugins are managed via
-[Plug](https://github.com/junegunn/vim-plug).
+You can clone the repository wherever you want. (I like to keep it in `~/devel/dotfiles`) The
+bootstrap script will create symlinks in your home folder.
 
-    git clone https://github.com/rockwood/dotfiles.git cd dotfiles source bootstrap.sh
-
-To update, `cd` into your local `dotfiles` repository and then:
-
+    git clone https://github.com/rockwood/dotfiles.git
+    cd dotfiles
     source bootstrap.sh
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-    set -- -f; source bootstrap.sh
 
 ### Specify the `$PATH`
 
@@ -30,8 +21,9 @@ Here’s an example `~/.path` file that adds `~/utils` to the `$PATH`:
 
 ### Add custom commands without creating a new fork
 
-If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands
-without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few
+custom commands without the need to fork this entire repository, or to add commands you don’t want
+to commit to a public repository.
 
 ## Scripts
 
@@ -43,20 +35,15 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ### Install Homebrew formulae
 
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing
-Homebrew, of course):
+When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae
+(after installing Homebrew, of course):
 
-    bash script/brew_setup
-
-### Install native apps with `brew cask`
-
-You could also install native apps with [`brew cask`](https://github.com/caskroom/homebrew-cask):
-
-    script/cask_setup
+    cd script
+    brew bundle
 
 ### Run ssh setup
 
-This will walk through creating an ssh key
+This will walk through creating an ssh key:
 
     bash script/ssh_setup
 
