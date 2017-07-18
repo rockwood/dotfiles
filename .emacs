@@ -27,14 +27,14 @@
 (setq use-package-always-ensure t)
 
 ;; Use one folder for all save/history/cache files
-(defconst my-backup-dir (expand-file-name "backups" user-emacs-directory))
-(unless (file-exists-p my-backup-dir)
-  (make-directory my-backup-dir))
+(defconst rock/backup-dir (expand-file-name "backups" user-emacs-directory))
+(unless (file-exists-p rock/backup-dir)
+  (make-directory rock/backup-dir))
 
 ;; Backup and lockfiles
 (setq create-lockfiles nil
-      backup-directory-alist `((".*" . ,my-backup-dir))
-      auto-save-file-name-transforms `((".*" ,my-backup-dir t)))
+      backup-directory-alist `((".*" . ,rock/backup-dir))
+      auto-save-file-name-transforms `((".*" ,rock/backup-dir t)))
 
 ;; Set keys for MacOS
 (setq mac-command-modifier 'super
@@ -242,8 +242,8 @@
 (use-package projectile
   :diminish projectile-mode
   :init
-  (setq projectile-cache-file (expand-file-name  "projectile.cache" my-backup-dir))
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" my-backup-dir))
+  (setq projectile-cache-file (expand-file-name  "projectile.cache" rock/backup-dir))
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" rock/backup-dir))
   (setq projectile-completion-system 'ivy)
   :config
   (projectile-global-mode)
@@ -367,7 +367,7 @@
   :mode (("\\.eex?\\'" . web-mode)
          ("\\.erb\\'" . web-mode))
   :init
-  (defun my-web-mode-hook ()
+  (defun rock/web-mode-hook ()
     (setq indent-tabs-mode nil
           web-mode-markup-indent-offset 2
           web-mode-css-indent-offset 2
@@ -375,17 +375,17 @@
           web-mode-style-padding 2
           web-mode-script-padding 2
           web-mode-enable-current-element-highlight t))
-  (add-hook 'web-mode-hook  'my-web-mode-hook))
+  (add-hook 'web-mode-hook  'rock/web-mode-hook))
 
 (use-package js2-mode
   :mode "\\.js\\'"
   :commands js2-mode
   :init
-  (defun my-js2-mode-hook ()
+  (defun rock/js2-mode-hook ()
     (setq js2-basic-offset 2
           js2-strict-trailing-comma-warning nil
           js2-warn-about-unused-function-arguments t))
-  (add-hook 'js2-mode-hook 'my-js2-mode-hook))
+  (add-hook 'js2-mode-hook 'rock/js2-mode-hook))
 
 (use-package css-mode
   :commands css-mode
