@@ -104,6 +104,9 @@
 (setq uniquify-buffer-name-style 'forward
       truncate-partial-width-windows nil)
 
+;; Disable the default version control process (we're using Magit)
+(setq vc-handled-backends nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
