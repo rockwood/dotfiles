@@ -12,12 +12,9 @@
 
 (package-initialize)
 
-;; Downloaded archive descriptions.
-(unless package-archive-contents
-  (package-refresh-contents))
-
 ;; Install use-package - https://github.com/jwiegley/use-package
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
 (eval-when-compile
