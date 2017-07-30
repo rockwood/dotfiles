@@ -104,6 +104,9 @@
 ;; Disable the default version control process (we're using Magit)
 (setq vc-handled-backends nil)
 
+;; Remap help since we use vim-style window navigation
+(global-set-key "\C-ch" help-map)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -137,6 +140,19 @@
   (bind-keys :map rock-leader :prefix "m" :prefix-map rock/magit)
   (bind-keys :map rock-leader :prefix "h" :prefix-map rock/help)
   (bind-keys :map rock-leader :prefix "t" :prefix-map rock/toggles)
+
+  :bind (:map rock-leader
+              ("1" . select-window-1)
+              ("2" . select-window-2)
+              ("3" . select-window-3)
+              ("4" . select-window-4)
+              ("5" . select-window-5)
+              ("6" . select-window-6))
+
+  :bind (:map rock/help
+              ("k" . describe-key)
+              ("f" . describe-function)
+              ("v" . describe-variable))
 
   :bind (:map rock/spelling
               ("s" . flyspell-mode)
@@ -182,11 +198,17 @@
                           `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c")))))
   (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
 
+(use-package window-numbering
+  :init
+  (window-numbering-mode t))
+
 (use-package spaceline-config
   :ensure spaceline
   :config
   (setq powerline-height 22
-        powerline-default-separator 'bar)
+        powerline-default-separator 'bar
+        spaceline-window-numbers-unicode t
+        spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
   (set-face-attribute 'powerline-active2 nil :background "#222222")
   (set-face-attribute 'powerline-inactive2 nil :background "#1c1c1c")
   (spaceline-spacemacs-theme))
