@@ -51,10 +51,6 @@
 ;; Only require `y/n` rather than `yes/no`
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Text and UI
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Font
 (set-frame-font "Monaco 14" nil t)
 (add-to-list 'default-frame-alist
