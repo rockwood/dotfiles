@@ -302,7 +302,6 @@
 
 (use-package company
   :diminish company-mode
-  :commands company-complete
   :init
   (global-company-mode)
   (define-key company-active-map (kbd "TAB") 'company-complete)
@@ -342,6 +341,10 @@
   :init
   (which-key-mode)
   (setq which-key-max-description-length 40))
+
+(use-package expand-region
+  :commands er/expand-region
+  :bind ("C-=" . er/expand-region))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
