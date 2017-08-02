@@ -121,6 +121,10 @@
 ;; Base Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package evil
   :init
   (evil-mode 1)
@@ -362,7 +366,6 @@
 (use-package alchemist
   :commands alchemist-mode
   :config
-  (setq alchemist-iex-program-name "~/.asdf/shims/iex")
   :bind (:map rock/alchemist
               ("tt" . alchemist-mix-test)
               ("tb" . alchemist-mix-test-this-buffer)
