@@ -146,8 +146,12 @@
               ("6" . select-window-6))
 
   :bind (:map rock/help
+              ("i" . info)
+              ("w" . where-is)
+              ("b" . describe-bindings)
               ("k" . describe-key)
               ("f" . describe-function)
+              ("m" . describe-mode)
               ("v" . describe-variable))
 
   :bind (:map rock/spelling
