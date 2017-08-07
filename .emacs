@@ -361,6 +361,11 @@
   :commands er/expand-region
   :bind ("C-=" . er/expand-region))
 
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :init
+  (yas-global-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
