@@ -107,6 +107,9 @@
 ;; Remap help since we use vim-style window navigation
 (global-set-key "\C-ch" help-map)
 
+;; Automatically close parens
+(electric-pair-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
