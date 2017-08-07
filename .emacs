@@ -6,15 +6,19 @@
 
 (setq package-enable-at-startup nil
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)
 
+(unless (and (file-exists-p "~/.emacs.d/elpa/archives/gnu")
+             (file-exists-p "~/.emacs.d/elpa/archives/melpa")
+             (file-exists-p "~/.emacs.d/elpa/archives/melpa-stable"))
+  (package-refresh-contents))
+
 ;; Install use-package - https://github.com/jwiegley/use-package
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 
 (eval-when-compile
