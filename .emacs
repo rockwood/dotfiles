@@ -210,6 +210,17 @@
                           `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c")))))
   (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
 
+(use-package dumb-jump
+  :bind (:map rock/goto
+              ("g" . dumb-jump-go)
+              ("b" . dumb-jump-back)
+              ("o" . dumb-jump-go-other-window)
+              ("p" . dumb-jump-prompt)
+              ("l" . dumb-jump-quick-look))
+  :config
+  (setq dumb-jump-selector 'ivy
+        dumb-jump-force-searcher 'ag))
+
 (use-package window-numbering
   :init
   (window-numbering-mode t))
