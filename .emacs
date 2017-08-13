@@ -146,6 +146,8 @@
   (bind-keys :map rock-leader :prefix "m" :prefix-map rock/magit)
   (bind-keys :map rock-leader :prefix "h" :prefix-map rock/help)
   (bind-keys :map rock-leader :prefix "t" :prefix-map rock/toggles)
+  (bind-keys :map rock-leader :prefix "g" :prefix-map rock/goto)
+  (bind-keys :map rock-leader :prefix "c" :prefix-map rock/commands)
 
   :bind (:map rock-leader
               ("1" . select-window-1)
@@ -249,6 +251,13 @@
 (use-package swiper
   :bind ("C-s" . swiper))
 
+(use-package counsel
+  :bind ("M-y" . counsel-yank-pop)
+  :bind (:map ivy-minibuffer-map
+              ("M-y" . ivy-next-line))
+  :bind (:map rock/commands
+              ("y" . counsel-yank-pop)))
+
 (use-package ivy
   :diminish ivy-mode
   :init
@@ -311,7 +320,7 @@
   (global-undo-tree-mode)
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t)
-  :bind (:map rock-leader
+  :bind (:map rock/commands
               ("u" . undo-tree-visualize)))
 
 (use-package company
