@@ -9,8 +9,6 @@
   st = status -sb
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-  # Clone a repository including all submodules
-  c = clone --recursive
   # Commit all changes
   ca = !git add -A && git commit -av
   # Show verbose output about tags, branches or remotes
@@ -21,8 +19,6 @@
   remotes = remote -v
   # Interactive rebase with the given number of latest commits
   reb = "!r() { git rebase -i HEAD~$1; }; r"
-  # Pull with rebase
-  tug = pull --rebase
   # Delete all merged branches
   clean-branches = "!git branch --merged | grep -v '\\*\\|master' | xargs -n 1 git branch -d"
 
@@ -31,6 +27,16 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   editor = vim
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+[push]
+  default = simple
+
+[pull]
+  rebase = true
 
 [color]
   # Use colors in Git commands that are capable of colored output when
@@ -49,24 +55,3 @@
   added = yellow
   changed = green
   untracked = cyan
-[merge]
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
-
-# URL shorthands
-[url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-  insteadOf = "github:"
-[url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-  insteadOf = "gist:"
-[push]
-  default = simple
-[pull]
-  rebase = true
