@@ -263,18 +263,18 @@
   :bind ("C-s" . swiper))
 
 (use-package counsel
-  :bind ("M-y" . counsel-yank-pop)
-  :bind (:map ivy-minibuffer-map
-              ("M-y" . ivy-next-line))
-  :bind (:map rock/commands
-              ("y" . counsel-yank-pop)))
+  :bind (("M-y" . counsel-yank-pop)
+         ("M-x" . counsel-M-x)
+         (:map rock/commands
+               ("y" . counsel-yank-pop))))
 
 (use-package ivy
   :diminish ivy-mode
   :init
   (ivy-mode 1)
   (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
-  (setq ivy-format-function 'ivy-format-function-arrow
+  (setq ivy-count-format "%d/%d "
+        ivy-format-function 'ivy-format-function-arrow
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
