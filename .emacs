@@ -181,6 +181,10 @@
               ("k" . delete-window)
               ("r" . window-configuration-to-register))
 
+  :bind (:map rock/goto
+              ("f" . find-file-at-point)
+              ("u" . browse-url-at-point))
+
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
               ("C-j" . evil-window-down)
@@ -257,7 +261,8 @@
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   :bind (:map rock/directories
-              ("d" . dired-jump)))
+              ("d" . dired-jump)
+              ("p" . dired-at-point)))
 
 (use-package swiper
   :bind ("C-s" . swiper))
