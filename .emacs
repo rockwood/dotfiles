@@ -261,7 +261,7 @@
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   :bind (:map rock/directories
-              ("d" . dired-jump)
+              ("x" . dired-jump)
               ("p" . dired-at-point)))
 
 (use-package swiper
@@ -399,6 +399,17 @@
   :diminish yas-minor-mode
   :init
   (yas-global-mode))
+
+(use-package ranger
+  :commands (ranger)
+  :bind (:map rock/directories
+              ("d" . ranger))
+  :config
+  (ranger-override-dired-mode t)
+  (setq ranger-show-hidden t
+        ranger-cleanup-eagerly t
+        ranger-dont-show-binary t
+        ranger-max-preview-size 10))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
