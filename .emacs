@@ -351,7 +351,6 @@
   :config
   (progn
     (setq linum-relative-current-symbol ""))
-  :init
   :bind (:map rock/toggles
               ("l" . linum-relative-toggle)))
 
@@ -364,9 +363,9 @@
               ("m" . magit-status)
               ("l" . magit-log-current)
               ("x" . magit-blame)
-              ("bb" . magit-branch-popup)
-              ("bc" . magit-branch-and-checkout)
-              ("pp" . magit-pull-popup)))
+              ("b" . magit-branch-popup)
+              ("c" . magit-branch-and-checkout)
+              ("p" . magit-pull-popup)))
 
 (use-package git-timemachine
   :bind (:map rock/magit
