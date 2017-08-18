@@ -37,12 +37,6 @@
       backup-directory-alist `((".*" . ,rock/backup-dir))
       auto-save-file-name-transforms `((".*" ,rock/backup-dir t)))
 
-;; Set keys for MacOS
-(setq mac-command-modifier 'super
-      mac-option-modifier 'meta
-      mac-control-modifier 'control
-      ns-function-modifier 'hyper)
-
 ;; Encoding
 (set-terminal-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -77,7 +71,7 @@
 
 ;; Vim style scrolling
 (setq scroll-step 1
-      scroll-conservatively 10000
+      scroll-conservatively 101
       mouse-wheel-follow-mouse 't
       mouse-wheel-progressive-speed nil
       mouse-wheel-scroll-amount '(2))
@@ -93,6 +87,9 @@
 ;; Highlight matching parentheses
 (show-paren-mode 1)
 
+;; Automatically close parens
+(electric-pair-mode 1)
+
 ;; Fringe
 (fringe-mode '(4 . 4))
 
@@ -106,8 +103,38 @@
 ;; Remap help since we use vim-style window navigation
 (global-set-key "\C-ch" help-map)
 
-;; Automatically close parens
-(electric-pair-mode 1)
+; Merge system's and Emacs' clipboard
+(setq select-enable-clipboard t
+      save-interprogram-paste-before-kill t)
+
+;; Make sure files end in a newline
+(setq require-final-newline t)
+
+;; Garbage-collect on focus-out, Emacs should feel snappier.
+(add-hook 'focus-out-hook #'garbage-collect)
+
+;; Mac specific config
+(let ((is-mac (string-equal system-type "darwin")))
+  (when is-mac
+
+    ;; Modifier keys
+    (setq mac-option-modifier 'meta
+          mac-command-modifier 'super
+          mac-control-modifier 'control
+          mac-function-modifier 'hyper)
+
+    ;; Don't make new frames when opening a new file with Emacs
+    (setq ns-pop-up-frames nil)
+
+    ;; Disable default fullscreen style
+    (setq ns-use-native-fullscreen nil)
+
+    ;; Don't use mac scrolling
+    (setq mac-mouse-wheel-smooth-scroll nil)
+
+    ;; Mac-style Keybindings
+    (global-set-key (kbd "s-=") 'text-scale-increase)
+    (global-set-key (kbd "s--") 'text-scale-decrease)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Functions
