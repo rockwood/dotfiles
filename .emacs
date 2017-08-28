@@ -226,7 +226,13 @@
 
   (use-package evil-surround
     :init
-    (global-evil-surround-mode 1)))
+    (global-evil-surround-mode))
+
+  (use-package evil-escape
+    :diminish evil-escape-mode
+    :config
+    (evil-escape-mode)
+    (setq evil-escape-key-sequence "fd")))
 
 (use-package seoul256-theme
   :config
