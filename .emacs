@@ -212,6 +212,10 @@
               ("f" . find-file-at-point)
               ("u" . browse-url-at-point))
 
+  :bind (:map rock/toggles
+              ("t" . toggle-truncate-lines)
+              ("w" . toggle-word-wrap))
+
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
               ("C-j" . evil-window-down)
@@ -287,7 +291,9 @@
         whitespace-action '(auto-cleanup)
         whitespace-style '(face tabs empty trailing lines-tail))
   (custom-set-faces '(whitespace-trailing ((t (:background "Grey16"))))
-                    '(whitespace-empty ((t (:background "Grey16"))))))
+                    '(whitespace-empty ((t (:background "Grey16")))))
+  :bind (:map rock/toggles
+              ("f" . global-whitespace-mode)))
 
 (use-package dired-x
   :ensure nil
@@ -435,7 +441,8 @@
 (use-package ranger
   :commands (ranger)
   :bind (:map rock/directories
-              ("d" . ranger))
+              ("d" . ranger)
+              ("e" . deer))
   :config
   (ranger-override-dired-mode t)
   (setq ranger-show-hidden t
