@@ -406,6 +406,11 @@
               ("c" . magit-branch-and-checkout)
               ("p" . magit-pull-popup)))
 
+(use-package ediff
+  :ensure nil
+  :defer t
+  :config (use-package evil-ediff))
+
 (use-package git-timemachine
   :bind (:map rock/magit
               ("t" . git-timemachine))
