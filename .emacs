@@ -483,7 +483,7 @@
               ("E" . alchemist-eval-region)))
 
 (use-package markdown-mode
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "markdown"))
 
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
