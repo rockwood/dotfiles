@@ -531,6 +531,8 @@
           js2-warn-about-unused-function-arguments t))
   (add-hook 'js2-mode-hook 'rock/js2-mode-hook))
 
+(use-package rjsx-mode)
+
 (use-package css-mode
   :commands css-mode
   :init
