@@ -313,7 +313,8 @@
   :init
   (ivy-mode 1)
   (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
-  (setq ivy-count-format "%d/%d "
+  (setq ivy-use-selectable-prompt t
+        ivy-count-format "%d/%d "
         ivy-format-function 'ivy-format-function-arrow
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
