@@ -393,6 +393,7 @@
   :config
   (use-package evil-magit)
   :init
+  (setq magit-completing-read-function 'ivy-completing-read)
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
   :bind (:map rock/magit
               ("m" . magit-status)
