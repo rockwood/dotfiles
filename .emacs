@@ -299,14 +299,6 @@
   :bind (:map rock/toggles
               ("f" . global-whitespace-mode)))
 
-(use-package dired-x
-  :ensure nil
-  :config
-  (put 'dired-find-alternate-file 'disabled nil)
-  :bind (:map rock/directories
-              ("x" . dired-jump)
-              ("p" . dired-at-point)))
-
 (use-package swiper
   :bind ("C-s" . swiper))
 
