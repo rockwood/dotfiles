@@ -351,7 +351,7 @@
   :bind (:map rock/projects
               ("p" . counsel-projectile-switch-project)
               ("b" . counsel-projectile-switch-to-buffer)
-              ("d" . counsel-projectile-find-dir)
+              ("D" . counsel-projectile-find-dir)
               ("f" . counsel-projectile-find-file)
               ("a" . counsel-projectile-ag)))
 
@@ -451,6 +451,22 @@
         ranger-cleanup-eagerly t
         ranger-dont-show-binary t
         ranger-max-preview-size 10))
+(use-package treemacs
+  :defer t
+  :bind (:map rock/directories
+              ("t" . treemacs-toggle)
+              ("f" . treemacs-find-file))
+  :config
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  (use-package treemacs-evil
+    :demand t)
+  (use-package treemacs-projectile
+    :defer t
+    :bind (:map rock/projects
+                ("d" . treemacs-projectile-toggle))
+    :config
+    (setq treemacs-header-function #'treemacs-projectile-create-header)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
