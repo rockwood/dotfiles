@@ -510,6 +510,7 @@
   :mode (("\\.eex?\\'" . web-mode)
          ("\\.erb\\'" . web-mode))
   :init
+  (setq scss-compile-at-save nil)
   (defun rock/web-mode-hook ()
     (setq indent-tabs-mode nil
           web-mode-markup-indent-offset 2
