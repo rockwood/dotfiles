@@ -446,11 +446,12 @@
               ("d" . ranger)
               ("e" . deer))
   :config
-  (ranger-override-dired-mode t)
   (setq ranger-show-hidden t
         ranger-cleanup-eagerly t
         ranger-dont-show-binary t
-        ranger-max-preview-size 10))
+        ranger-max-preview-size 10
+        ranger-hide-cursor nil))
+
 (use-package treemacs
   :defer t
   :bind (:map rock/directories
@@ -499,6 +500,8 @@
               ("x" . alchemist-iex-send-region)
               ("e" . alchemist-eval-current-line)
               ("E" . alchemist-eval-region)))
+
+(use-package erlang)
 
 (use-package markdown-mode
   :init (setq markdown-command "markdown"))
