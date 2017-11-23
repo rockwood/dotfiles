@@ -113,6 +113,10 @@
 ;; Garbage-collect on focus-out, Emacs should feel snappier.
 (add-hook 'focus-out-hook #'garbage-collect)
 
+;; Highlight the current line
+(global-hl-line-mode 1)
+(set-face-attribute 'hl-line nil :foreground nil :background "#333")
+
 ;; Mac specific config
 (let ((is-mac (string-equal system-type "darwin")))
   (when is-mac
