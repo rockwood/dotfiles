@@ -320,9 +320,6 @@
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
 
-  :bind (:map rock/buffers
-              ("b" . ivy-switch-buffer))
-
   :bind (:map ivy-minibuffer-map
               ("TAB"      . ivy-alt-done)
               ("<escape>" . minibuffer-keyboard-quit)
@@ -469,6 +466,22 @@
                 ("d" . treemacs-projectile-toggle))
     :config
     (setq treemacs-header-function #'treemacs-projectile-create-header)))
+
+(use-package window-purpose
+  :init
+  (setq purpose-preferred-prompt 'vanilla)
+  (purpose-mode)
+  :config
+  (require 'window-purpose-x)
+  (purpose-x-magit-single-on)
+  :bind (:map rock/buffers
+              ("s" . purpose-switch-buffer-with-purpose)
+              ("f" . switch-buffer-without-purpose))
+  :bind (:map rock/windows
+              ("d" . purpose-toggle-window-purpose-dedicated)
+              ("D" . purpose-toggle-window-buffer-dedicated)
+              ("s" . purpose-save-window-layout)
+              ("l" . purpose-load-window-layout)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Language Packages
