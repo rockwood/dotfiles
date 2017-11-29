@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# this symlinks all the dotfiles (and .vim/) to ~/
-# it also symlinks ~/bin for easy updating
-
-# this is safe to run multiple times and will prompt you about anything unclear
+# This symlinks all dotfiles to ~/. It's safe to run multiple times and will prompt you about
+# anything unclear.
 
 answer_is_yes() {
     [[ "$REPLY" =~ ^[Yy]$ ]] \
@@ -55,33 +53,39 @@ print_success() {
 # Actual symlink stuff
 #
 
-# finds all .dotfiles in this folder
-declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git | sed -e 's|//|/|' | sed -e 's|./.|.|')
-FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim bin .config/fish" # Add extra binaries
+# Finds all .dotfiles in this folder
+declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store | sed -e 's|//|/|' | sed -e 's|./.|.|')
+
+# Finds all files in these extra config dirs
+for dir in $(echo .config .emacs.d .vim bin); do
+    FILES_TO_SYMLINK="$FILES_TO_SYMLINK $(find $dir -type f -not -name .DS_Store)"
+done
 
 main() {
-    local i=""
-    local sourceFile=""
-    local targetFile=""
+    local file=""
+    local sourcePath=""
+    local targetPath=""
 
-    for i in ${FILES_TO_SYMLINK[@]}; do
-        sourceFile="$(pwd)/$i"
-        targetFile="$HOME/$i"
+    for file in ${FILES_TO_SYMLINK[@]}; do
+        sourcePath="$(pwd)/$file"
+        targetPath="$HOME/$file"
 
-        if [ -e "$targetFile" ]; then
-            if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
-                ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+        mkdir -p "$(dirname $targetPath)"
+
+        if [ -e "$targetPath" ]; then
+            if [ "$(readlink "$targetPath")" != "$sourcePath" ]; then
+                ask_for_confirmation "'$targetPath' already exists, do you want to overwrite it?"
                 if answer_is_yes; then
-                    rm -rf "$targetFile"
-                    execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+                    rm "$targetPath"
+                    execute "ln -fs $sourcePath $targetPath" "$targetPath → $sourcePath"
                 else
-                    print_error "$targetFile → $sourceFile"
+                    print_error "$targetPath → $sourcePath"
                 fi
             else
-                print_success "$targetFile → $sourceFile"
+                print_success "$targetPath → $sourcePath"
             fi
         else
-            execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+            execute "ln -fs $sourcePath $targetPath" "$targetPath → $sourcePath"
         fi
     done
 }
