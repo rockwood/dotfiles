@@ -274,7 +274,8 @@
   :ensure spaceline
   :config
   (setq powerline-height 22
-        powerline-default-separator 'bar
+        powerline-default-separator 'alternate
+        powerline-image-apple-rgb t
         spaceline-window-numbers-unicode t
         spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
   (set-face-attribute 'powerline-active2 nil :background "#222222")
