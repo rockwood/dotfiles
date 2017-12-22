@@ -44,7 +44,7 @@
 
   :bind (:map rock/buffers
               ("k" . kill-this-buffer)
-              ("m" . buffer-menu))
+              ("m" . ibuffer))
 
   :bind (:map rock/windows
               ("m" . maximize-window)
