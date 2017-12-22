@@ -215,9 +215,10 @@
 (use-package undo-tree
   :diminish undo-tree-mode
   :init
-  (global-undo-tree-mode)
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t)
+  :config
+  (global-undo-tree-mode)
   :bind (:map rock/commands
               ("u" . undo-tree-visualize)))
 
@@ -237,11 +238,12 @@
               ("l" . linum-relative-toggle)))
 
 (use-package magit
-  :config
-  (use-package evil-magit)
   :init
   (setq magit-completing-read-function 'ivy-completing-read)
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
+  :config
+  (bind-key "SPC" 'rock-leader magit-mode-map)
+  (use-package evil-magit)
   :bind (:map rock/magit
               ("m" . magit-status)
               ("l" . magit-log-current)
@@ -292,6 +294,7 @@
               ("d" . ranger)
               ("e" . deer))
   :config
+  (bind-key "SPC" 'rock-leader ranger-mode-map)
   (setq ranger-show-hidden t
         ranger-cleanup-eagerly t
         ranger-dont-show-binary t
