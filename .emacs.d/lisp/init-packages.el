@@ -160,8 +160,15 @@
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
+  (defun rock/ignore-buffers (buf)
+    (when (get-buffer buf)
+      (with-current-buffer buf
+        (when (member major-mode '(dired-mode ranger-mode)) t))))
+  :config
+  (add-hook 'ivy-ignore-buffers 'rock/ignore-buffers)
   :bind (:map rock/buffers
-              ("b" . ivy-switch-buffer))
+              ("b" . ivy-switch-buffer)
+              ("B" . ivy-switch-buffer-other-window))
   :bind (:map ivy-minibuffer-map
               ("TAB"      . ivy-alt-done)
               ("<escape>" . minibuffer-keyboard-quit)
