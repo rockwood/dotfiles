@@ -67,6 +67,8 @@
               ("C-l" . evil-window-right))
 
   :config
+  (evil-add-hjkl-bindings ibuffer-mode-map)
+
   (use-package evil-commentary
     :diminish evil-commentary-mode
     :config
