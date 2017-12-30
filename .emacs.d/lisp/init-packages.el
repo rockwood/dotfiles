@@ -80,7 +80,7 @@
     :diminish evil-escape-mode
     :config
     (evil-escape-mode)
-    (setq evil-escape-key-sequence "fd")))
+    (setq evil-escape-key-sequence "jk")))
 
 (use-package seoul256-theme
   :config
