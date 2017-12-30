@@ -154,7 +154,6 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
-  (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
   (setq ivy-count-format "%d/%d "
         ivy-display-style 'fancy
         ivy-initial-inputs-alist nil
@@ -231,9 +230,11 @@
   (define-key company-active-map (kbd "C-k") 'company-select-previous))
 
 (use-package linum-relative
+  :demand t
+  :init
+  (setq linum-relative-current-symbol "")
   :config
-  (progn
-    (setq linum-relative-current-symbol ""))
+  (linum-relative-on)
   :bind (:map rock/toggles
               ("l" . linum-relative-toggle)))
 
