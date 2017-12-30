@@ -92,7 +92,8 @@
                           `(mode-line-buffer-id ((t (:foreground "#ffffff" :background "#48667E"))))
                           `(mode-line-emphasis  ((t (:foreground "#222222" :slant italic))))
                           `(mode-line-highlight ((t (:foreground "#ffffff" :background "#48667E"))))
-                          `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c")))))
+                          `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c"))))
+                          `(ivy-minibuffer-match-face-1  ((t (:inherit isearch)))))
   (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
 
 (use-package dumb-jump
@@ -154,9 +155,8 @@
   :init
   (ivy-mode 1)
   (add-hook 'minibuffer-setup-hook (lambda () (linum-mode 0)))
-  (setq ivy-use-selectable-prompt t
-        ivy-count-format "%d/%d "
-        ivy-format-function 'ivy-format-function-arrow
+  (setq ivy-count-format "%d/%d "
+        ivy-display-style 'fancy
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
