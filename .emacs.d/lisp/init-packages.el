@@ -245,6 +245,7 @@
   (setq magit-completing-read-function 'ivy-completing-read
         magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
+  (add-hook 'with-editor-mode-hook 'evil-insert-state)
   :config
   (bind-key "SPC" 'rock-leader magit-mode-map)
   (use-package evil-magit)
