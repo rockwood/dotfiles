@@ -82,7 +82,7 @@
     :diminish evil-escape-mode
     :config
     (evil-escape-mode)
-    (setq evil-escape-key-sequence "jk")))
+    :bind ("C-g" . evil-escape)))
 
 (use-package seoul256-theme
   :config
