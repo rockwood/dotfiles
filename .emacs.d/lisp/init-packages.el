@@ -179,9 +179,9 @@
 (use-package projectile
   :diminish projectile-mode
   :init
-  (setq projectile-cache-file (expand-file-name  "projectile.cache" rock/backup-dir))
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" rock/backup-dir))
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-cache-file (expand-file-name  "projectile.cache" rock/backup-dir)
+        projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" rock/backup-dir)
+        projectile-completion-system 'ivy)
   :config
   (projectile-global-mode)
   :bind (:map rock/projects
