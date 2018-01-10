@@ -186,7 +186,7 @@
   (projectile-global-mode)
   :bind (:map rock/projects
               ("t" . projectile-toggle-between-implementation-and-test)
-              ("T" . projectile-find-test-file)
+              ("T" . projectile-find-implementation-or-test-other-window)
               ("P" . projectile-test-project)
               ("k" . projectile-kill-buffers)
               ("r" . projectile-replace)
