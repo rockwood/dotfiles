@@ -2,6 +2,8 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package delight) ;; For hiding minor modes
+
 (use-package evil
   :init
   (evil-mode 1)
@@ -70,7 +72,7 @@
   (evil-add-hjkl-bindings ibuffer-mode-map)
 
   (use-package evil-commentary
-    :diminish evil-commentary-mode
+    :delight evil-commentary-mode
     :config
     (evil-commentary-mode))
 
@@ -79,7 +81,7 @@
     (global-evil-surround-mode))
 
   (use-package evil-escape
-    :diminish evil-escape-mode
+    :delight evil-escape-mode
     :config
     (evil-escape-mode)
     :bind ("C-g" . evil-escape)))
@@ -132,7 +134,7 @@
          ("C-S-l" . buf-move-right)))
 
 (use-package whitespace
-  :diminish global-whitespace-mode
+  :delight global-whitespace-mode
   :init
   (global-whitespace-mode 1)
   (setq whitespace-line-column 100
@@ -153,7 +155,7 @@
                ("y" . counsel-yank-pop))))
 
 (use-package ivy
-  :diminish ivy-mode
+  :delight ivy-mode
   :init
   (ivy-mode 1)
   (setq ivy-count-format "%d/%d "
@@ -177,7 +179,7 @@
               ("C-k"      . ivy-previous-line)))
 
 (use-package projectile
-  :diminish projectile-mode
+  :delight
   :init
   (setq projectile-cache-file (expand-file-name  "projectile.cache" rock/backup-dir)
         projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" rock/backup-dir)
@@ -204,7 +206,7 @@
               ("a" . counsel-projectile-ag)))
 
 (use-package drag-stuff
-  :diminish drag-stuff-mode
+  :delight drag-stuff-mode
   :init
   (drag-stuff-global-mode 1)
   :bind (:map drag-stuff-mode-map
@@ -214,7 +216,7 @@
               ("s-l" . drag-stuff-right)))
 
 (use-package undo-tree
-  :diminish undo-tree-mode
+  :delight undo-tree-mode
   :init
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t)
@@ -224,7 +226,7 @@
               ("u" . undo-tree-visualize)))
 
 (use-package company
-  :diminish company-mode
+  :delight company-mode
   :init
   (global-company-mode)
   (define-key company-active-map (kbd "TAB") 'company-complete)
@@ -280,7 +282,7 @@
               ("h" . dash-at-point)))
 
 (use-package which-key
-  :diminish which-key-mode
+  :delight which-key-mode
   :init
   (which-key-mode)
   (setq which-key-max-description-length 40))
@@ -290,7 +292,7 @@
   :bind ("C-=" . er/expand-region))
 
 (use-package yasnippet
-  :diminish yas-minor-mode
+  :delight yas-minor-mode
   :init
   (yas-global-mode))
 
@@ -389,7 +391,7 @@
   (setq-default css-indent-offset 2))
 
 (use-package rainbow-mode
-  :diminish rainbow-mode
+  :delight rainbow-mode
   :init
   (dolist (hooks '(css-mode-hook html-mode-hook scss-mode-hook))
     (add-hook hooks 'rainbow-mode)))
