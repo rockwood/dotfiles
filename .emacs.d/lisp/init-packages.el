@@ -294,7 +294,9 @@
 (use-package yasnippet
   :delight yas-minor-mode
   :init
-  (yas-global-mode))
+  (yas-global-mode)
+  :config
+  (use-package yasnippet-snippets))
 
 (use-package ranger
   :bind (:map rock/directories
