@@ -296,7 +296,12 @@
   :init
   (yas-global-mode)
   :config
-  (use-package yasnippet-snippets))
+  (use-package yasnippet-snippets)
+  (use-package auto-yasnippet
+    :config
+    :bind ("C-<tab>" . aya-expand)
+          (:map rock/commands
+                ("y" . aya-create))))
 
 (use-package ranger
   :bind (:map rock/directories
