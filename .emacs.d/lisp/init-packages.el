@@ -60,7 +60,8 @@
 
   :bind (:map rock/toggles
               ("t" . toggle-truncate-lines)
-              ("w" . toggle-word-wrap))
+              ("w" . toggle-word-wrap)
+              ("a" . toggle-text-mode-auto-fill))
 
   :bind (:map evil-normal-state-map
               ("C-h" . evil-window-left)
@@ -140,10 +141,11 @@
   (setq whitespace-line-column 100
         whitespace-action '(auto-cleanup)
         whitespace-style '(face tabs empty trailing lines-tail))
-  (custom-set-faces '(whitespace-trailing ((t (:background "Grey16"))))
-                    '(whitespace-empty ((t (:background "Grey16")))))
-  :bind (:map rock/toggles
-              ("f" . global-whitespace-mode)))
+  (custom-set-faces '(whitespace-trailing ((t (:background "red4"))))
+                    '(whitespace-empty ((t (:background "red4"))))
+                    '(whitespace-line ((t (:background "red4")))))
+  :bind (:map rock/commands
+              ("w" . global-whitespace-mode)))
 
 (use-package swiper
   :bind ("C-s" . swiper))
@@ -363,7 +365,11 @@
 (use-package erlang)
 
 (use-package markdown-mode
-  :init (setq markdown-command "markdown"))
+  :init
+  (setq markdown-command "markdown")
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("CONTRIBUTING\\.md\\'" . gfm-mode)))
 
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
