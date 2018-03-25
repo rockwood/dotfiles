@@ -52,7 +52,8 @@
               ("m" . maximize-window)
               ("=" . balance-windows)
               ("k" . delete-window)
-              ("r" . window-configuration-to-register))
+              ("w" . window-configuration-to-register)
+              ("j" . jump-to-register))
 
   :bind (:map rock/goto
               ("f" . find-file-at-point)
