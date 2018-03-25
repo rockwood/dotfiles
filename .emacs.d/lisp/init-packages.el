@@ -103,8 +103,8 @@
 (use-package dumb-jump
   :bind (:map rock/goto
               ("g" . dumb-jump-go)
+              ("G" . dumb-jump-go-other-window)
               ("b" . dumb-jump-back)
-              ("o" . dumb-jump-go-other-window)
               ("p" . dumb-jump-prompt)
               ("l" . dumb-jump-quick-look))
   :config
@@ -347,8 +347,7 @@
               ("r" . alchemist-mix-rerun-last-test)
               ("s" . alchemist-mix-test-stale)
               ("T" . alchemist-project-toggle-file-and-tests)
-              ("d" . alchemist-goto-definition-at-point)
-              ("g" . alchemist-goto-jump-back)
+              ("g" . alchemist-goto-definition-at-point)
               ("H" . alchemist-help)
               ("h" . alchemist-help-search-at-point)
               ("m" . alchemist-mix)
