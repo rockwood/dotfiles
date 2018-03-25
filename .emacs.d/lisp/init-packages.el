@@ -10,7 +10,6 @@
 
   ;; Spacemacs style leader bindings
   (bind-keys :map evil-normal-state-map :prefix "SPC" :prefix-map rock-leader)
-  (bind-keys :map rock-leader :prefix "s" :prefix-map rock/spelling)
   (bind-keys :map rock-leader :prefix "b" :prefix-map rock/buffers)
   (bind-keys :map rock-leader :prefix "w" :prefix-map rock/windows)
   (bind-keys :map rock-leader :prefix "d" :prefix-map rock/directories)
@@ -39,9 +38,9 @@
               ("m" . describe-mode)
               ("v" . describe-variable))
 
-  :bind (:map rock/spelling
-              ("s" . flyspell-mode)
-              ("n" . flyspell-goto-next-error)
+  :bind (:map rock/commands
+              ("s" . flyspell-prog-mode)
+              ("S" . flyspell-mode)
               ("c" . ispell-word))
 
   :bind (:map rock/buffers
