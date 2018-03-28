@@ -194,7 +194,7 @@
               ("P" . projectile-test-project)
               ("k" . projectile-kill-buffers)
               ("r" . projectile-replace)
-              ("k" . projectile-kill-buffers)
+              ("s" . projectile-run-eshell)
               ("j" . projectile-find-tag)
               ("R" . projectile-regenerate-tags)
               ("i" . projectile-invalidate-cache)))
