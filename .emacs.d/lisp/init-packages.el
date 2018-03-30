@@ -210,7 +210,7 @@
   :bind (:map rock/projects
               ("p" . counsel-projectile-switch-project)
               ("b" . counsel-projectile-switch-to-buffer)
-              ("D" . counsel-projectile-find-dir)
+              ("d" . counsel-projectile-find-dir)
               ("f" . counsel-projectile-find-file)
               ("a" . counsel-projectile-ag)))
 
@@ -324,23 +324,6 @@
         ranger-dont-show-binary t
         ranger-max-preview-size 10
         ranger-hide-cursor nil))
-
-(use-package treemacs
-  :defer t
-  :bind (:map rock/directories
-              ("t" . treemacs-toggle)
-              ("f" . treemacs-find-file))
-  :config
-  (treemacs-follow-mode t)
-  (treemacs-filewatch-mode t)
-  (use-package treemacs-evil
-    :demand t)
-  (use-package treemacs-projectile
-    :defer t
-    :bind (:map rock/projects
-                ("d" . treemacs-projectile-toggle))
-    :config
-    (setq treemacs-header-function #'treemacs-projectile-create-header)))
 
 (use-package elixir-mode
   :commands elixir-mode
