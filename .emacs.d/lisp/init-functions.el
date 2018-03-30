@@ -8,8 +8,10 @@
       (package-menu-mark-upgrades)
       (package-menu-execute 'noquery))))
 
-(defun eshell/clear ()
+(defun eshell/clear()
   "Clear the eshell buffer."
-  (let ((eshell-buffer-maximum-lines 0)) (eshell-truncate-buffer)))
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
 
 (provide 'init-functions)

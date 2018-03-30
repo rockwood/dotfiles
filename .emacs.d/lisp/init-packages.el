@@ -1,8 +1,15 @@
+;; Load the current shell environment into emacs shells
 (use-package exec-path-from-shell
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
 
-(use-package delight) ;; For hiding minor modes
+  ;; Customize the eshell prompt to print fish_prompt
+  (setq eshell-prompt-regexp "^[^»]+ » "
+        eshell-prompt-function (lambda ()
+          (propertize (shell-command-to-string (concat "cd " (eshell/pwd) "; and fish_prompt"))))))
+
+;; Customize minor mode display
+(use-package delight)
 
 (use-package evil
   :init
