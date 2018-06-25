@@ -234,20 +234,11 @@
   (define-key company-active-map (kbd "C-j") 'company-select-next)
   (define-key company-active-map (kbd "C-k") 'company-select-previous))
 
-(use-package linum-relative
-  :demand t
-  :init
-  (setq linum-relative-current-symbol "")
-  :config
-  (linum-relative-on)
-  :bind (:map rock/toggles
-              ("l" . linum-relative-toggle)))
-
 (use-package magit
   :init
   (setq magit-completing-read-function 'ivy-completing-read
         magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (add-hook 'git-commit-setup-hook (lambda () (linum-mode 0)))
+  (add-hook 'git-commit-setup-hook (lambda () (display-line-numbers-mode 0)))
   (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   :config

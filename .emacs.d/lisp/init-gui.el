@@ -52,8 +52,10 @@
               tab-width 2
               fill-column 100)
 
+(setq display-line-numbers-type 'relative)
+
 ;; Show line numbers
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;; Highlight matching parentheses
 (show-paren-mode 1)
