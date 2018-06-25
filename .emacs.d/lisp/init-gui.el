@@ -94,6 +94,9 @@
 (let ((is-mac (string-equal system-type "darwin")))
   (when is-mac
 
+    ;; Fancy titlebar
+    (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
     ;; Modifier keys
     (setq mac-option-modifier 'meta
           mac-command-modifier 'super
