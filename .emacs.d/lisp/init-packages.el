@@ -97,16 +97,8 @@
 (use-package seoul256-theme
   :config
   (setq seoul256-background 233)
-  (load-theme 'seoul256 t)
-  (custom-theme-set-faces 'seoul256
-                          `(fringe              ((t (:background "#252525"))))
-                          `(mode-line           ((t (:foreground "#ffffff" :background "#48667E"))))
-                          `(mode-line-buffer-id ((t (:foreground "#ffffff" :background "#48667E"))))
-                          `(mode-line-emphasis  ((t (:foreground "#222222" :slant italic))))
-                          `(mode-line-highlight ((t (:foreground "#ffffff" :background "#48667E"))))
-                          `(mode-line-inactive  ((t (:foreground "#666666" :background "#1c1c1c"))))
-                          `(ivy-minibuffer-match-face-1  ((t (:inherit isearch)))))
-  (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background)))
+  (set-face-attribute 'vertical-border nil :foreground "#171717")
+  (load-theme 'seoul256 t))
 
 (use-package dumb-jump
   :bind (:map rock/goto
