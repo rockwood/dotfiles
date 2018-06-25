@@ -297,10 +297,12 @@
                 ("y" . aya-create))))
 
 (use-package ranger
+  :demand t
   :bind (:map rock/directories
               ("d" . ranger)
               ("e" . deer))
   :config
+  (ranger-override-dired-mode t)
   (bind-key "SPC" 'rock-leader ranger-mode-map)
   (setq ranger-show-hidden t
         ranger-cleanup-eagerly t
