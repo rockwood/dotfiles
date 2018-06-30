@@ -95,9 +95,10 @@
     :bind ("C-g" . evil-escape)))
 
 (use-package seoul256-theme
-  :config
+  :init
   (setq seoul256-background 233)
-  (set-face-attribute 'vertical-border nil :foreground "#171717")
+  :config
+  (set-face-attribute 'vertical-border nil :foreground "#252525")
   (load-theme 'seoul256 t))
 
 (use-package dumb-jump

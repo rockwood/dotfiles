@@ -63,8 +63,8 @@
 ;; Automatically close parens
 (electric-pair-mode 1)
 
-;; Fringe
-(fringe-mode '(4 . 4))
+;; Turn off fringes
+(set-fringe-mode 0)
 
 ;; Buffers
 (setq uniquify-buffer-name-style 'forward
