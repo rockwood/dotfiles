@@ -3,18 +3,11 @@
   name = Kevin Rockwood
 
 [alias]
-  # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) %an %Creset' --abbrev-commit
-  # View the current working tree status using the short format
+  l = "!. ~/.githelpers && pretty_git_log"
+  r = !GIT_NO_PAGER=1 git l -30
+  b = "!. ~/.githelpers && pretty_git_branch"
   st = status -sb
-  # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-  # Commit all changes
-  ca = !git add -A && git commit -av
-  # Show verbose output about tags, branches or remotes
   tags = tag -l
-  br = branch
-  brs = branch -a
   co = checkout
   remotes = remote -v
   # Interactive rebase with the given number of latest commits
@@ -23,7 +16,6 @@
   clean-branches = "!git branch --merged | grep -v '\\*\\|master' | xargs -n 1 git branch -d"
 
 [core]
-  # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   editor = vim
