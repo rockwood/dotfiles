@@ -46,6 +46,7 @@
               ("v" . describe-variable))
 
   :bind (:map rock/commands
+              ("a" . auto-fill-mode)
               ("s" . flyspell-prog-mode)
               ("S" . flyspell-mode)
               ("c" . ispell-word))
@@ -343,9 +344,23 @@
 (use-package markdown-mode
   :init
   (setq markdown-command "markdown")
+  (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+  (add-hook 'markdown-mode-hook 'turn-on-flyspell)
   :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("CONTRIBUTING\\.md\\'" . gfm-mode)))
+  :mode (("\\.md\\'" . gfm-mode))
+  :bind (:map rock/commands
+              ("l" . markdown-live-preview-mode)))
+
+(use-package flymd
+  :commands (flymd-flyit)
+  :init
+  (defun rock-flymd-browser-function (url)
+    (let ((process-environment (browse-url-process-environment)))
+      (apply 'start-process (concat "firefox " url) nil "/usr/bin/open" (list "-a" "firefox" url))))
+  (setq flymd-output-directory rock/backup-dir)
+  (setq flymd-browser-open-function 'rock-flymd-browser-function)
+  :bind (:map rock/commands
+              ("m" . flymd-flyit)))
 
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
