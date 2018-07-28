@@ -209,6 +209,8 @@
               ("f" . counsel-projectile-find-file)
               ("a" . counsel-projectile-ag)))
 
+(use-package wgrep)
+
 (use-package drag-stuff
   :delight drag-stuff-mode
   :init
