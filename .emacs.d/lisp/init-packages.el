@@ -34,7 +34,8 @@
               ("3" . select-window-3)
               ("4" . select-window-4)
               ("5" . select-window-5)
-              ("6" . select-window-6))
+              ("6" . select-window-6)
+              ("s" . save-buffer))
 
   :bind (:map rock/help
               ("i" . info)
