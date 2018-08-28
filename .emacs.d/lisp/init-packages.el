@@ -13,6 +13,7 @@
 
 (use-package evil
   :init
+  (setq evil-shift-width 2)
   (evil-mode 1)
 
   ;; Spacemacs style leader bindings
