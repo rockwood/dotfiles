@@ -13,24 +13,24 @@
 # break this.
 
 LOG_HASH="%C(always,yellow)%h%C(always,reset)"
-LOG_RELATIVE_TIME="%C(always,green)(%ar)%C(always,reset)"
+LOG_DATE="%C(always,green)%ad%C(always,reset)"
 LOG_AUTHOR="%C(always,blue)<%an>%C(always,reset)"
 LOG_SUBJECT="%s"
 LOG_REFS="%C(always,red)%d%C(always,reset)"
 
-LOG_FORMAT="$LOG_HASH}$LOG_RELATIVE_TIME}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
+LOG_FORMAT="$LOG_HASH}$LOG_DATE}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
 
 BRANCH_PREFIX="%(HEAD)"
 BRANCH_REF="%(color:red)%(refname:short)%(color:reset)"
 BRANCH_HASH="%(color:yellow)%(objectname:short)%(color:reset)"
-BRANCH_DATE="%(color:green)(%(committerdate:relative))%(color:reset)"
+BRANCH_DATE="%(color:green)%(committerdate:local)%(color:reset)"
 BRANCH_AUTHOR="%(color:blue)<%(authorname)>%(color:reset)"
 BRANCH_CONTENTS="%(contents:subject)"
 
 BRANCH_FORMAT="$BRANCH_PREFIX}$BRANCH_REF}$BRANCH_HASH}$BRANCH_DATE}$BRANCH_AUTHOR}$BRANCH_CONTENTS"
 
 pretty_git_log() {
-    git log --graph --pretty="tformat:${LOG_FORMAT}" $* | pretty_git_format | git_page_maybe
+    git log --graph --date=local --pretty="tformat:${LOG_FORMAT}" $* | pretty_git_format | git_page_maybe
 }
 
 pretty_git_branch() {
