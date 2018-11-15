@@ -319,7 +319,9 @@
 (use-package elixir-mode
   :commands elixir-mode
   :config
-  (add-hook 'elixir-mode-hook 'alchemist-mode))
+  (add-hook 'elixir-mode-hook 'alchemist-mode)
+  :bind (:map rock/alchemist
+              ("f" . elixir-format)))
 
 (use-package alchemist
   :commands alchemist-mode
