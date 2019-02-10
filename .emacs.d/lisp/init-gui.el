@@ -60,9 +60,6 @@
 ;; Highlight matching parentheses
 (show-paren-mode 1)
 
-;; Automatically close parens
-(electric-pair-mode 1)
-
 ;; Turn off fringes
 (set-fringe-mode 0)
 
