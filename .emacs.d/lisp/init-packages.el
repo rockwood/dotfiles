@@ -167,6 +167,7 @@
         ivy-display-style 'fancy
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                                (counsel-ag . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
   (defun rock/ignore-buffers (buf)
     (when (get-buffer buf)
@@ -208,6 +209,7 @@
               ("b" . counsel-projectile-switch-to-buffer)
               ("d" . counsel-projectile-find-dir)
               ("f" . counsel-projectile-find-file)
+              ("g" . counsel-projectile-git-grep)
               ("a" . counsel-projectile-ag)))
 
 (use-package wgrep)
