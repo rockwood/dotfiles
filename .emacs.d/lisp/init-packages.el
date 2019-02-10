@@ -308,7 +308,8 @@
   :demand t
   :bind (:map rock/directories
               ("d" . ranger)
-              ("e" . deer))
+              ("e" . deer)
+              ("k" . ranger-kill-buffers-without-window))
   :config
   (ranger-override-dired-mode t)
   (bind-key "SPC" 'rock-leader ranger-mode-map)
