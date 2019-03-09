@@ -22,7 +22,7 @@
   (bind-keys :map rock-leader :prefix "w" :prefix-map rock/windows)
   (bind-keys :map rock-leader :prefix "d" :prefix-map rock/directories)
   (bind-keys :map rock-leader :prefix "p" :prefix-map rock/projects)
-  (bind-keys :map rock-leader :prefix "a" :prefix-map rock/alchemist)
+  (bind-keys :map rock-leader :prefix "e" :prefix-map rock/elixir)
   (bind-keys :map rock-leader :prefix "m" :prefix-map rock/magit)
   (bind-keys :map rock-leader :prefix "h" :prefix-map rock/help)
   (bind-keys :map rock-leader :prefix "t" :prefix-map rock/toggles)
@@ -51,7 +51,8 @@
               ("a" . auto-fill-mode)
               ("s" . flyspell-prog-mode)
               ("S" . flyspell-mode)
-              ("c" . ispell-word))
+              ("c" . ispell-word)
+              ("d" . calendar))
 
   :bind (:map rock/buffers
               ("k" . kill-this-buffer)
@@ -319,36 +320,13 @@
         ranger-max-preview-size 10
         ranger-hide-cursor nil))
 
+(use-package erlang)
+
 (use-package elixir-mode
   :commands elixir-mode
   :config
-  (add-hook 'elixir-mode-hook 'alchemist-mode)
-  :bind (:map rock/alchemist
+  :bind (:map rock/elixir
               ("f" . elixir-format)))
-
-(use-package alchemist
-  :commands alchemist-mode
-  :config
-  :bind (:map rock/alchemist
-              ("t" . alchemist-mix-test)
-              ("b" . alchemist-mix-test-this-buffer)
-              ("a" . alchemist-mix-test-at-point)
-              ("r" . alchemist-mix-rerun-last-test)
-              ("s" . alchemist-mix-test-stale)
-              ("T" . alchemist-project-toggle-file-and-tests)
-              ("g" . alchemist-goto-definition-at-point)
-              ("H" . alchemist-help)
-              ("h" . alchemist-help-search-at-point)
-              ("m" . alchemist-mix)
-              ("c" . alchemist-mix-compile)
-              ("i" . alchemist-iex-project-run)
-              ("l" . alchemist-iex-send-current-line)
-              ("z" . alchemist-iex-compile-this-buffer)
-              ("x" . alchemist-iex-send-region)
-              ("e" . alchemist-eval-current-line)
-              ("E" . alchemist-eval-region)))
-
-(use-package erlang)
 
 (use-package markdown-mode
   :init
@@ -410,5 +388,7 @@
     (add-hook hooks 'rainbow-mode)))
 
 (use-package fish-mode)
+
+(use-package protobuf-mode)
 
 (provide 'init-packages)
