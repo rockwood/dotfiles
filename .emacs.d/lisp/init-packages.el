@@ -186,7 +186,7 @@
               ("C-k"      . ivy-previous-line)))
 
 (use-package projectile
-  :delight
+  :delight '(:eval (concat " " (projectile-project-name)))
   :init
   (setq projectile-cache-file (expand-file-name  "projectile.cache" rock/backup-dir)
         projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" rock/backup-dir)
