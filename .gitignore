@@ -25,3 +25,5 @@ vendor/ruby
 # Redis dumps
 dump.rdb
 
+# Elixir language server
+.elixir_ls

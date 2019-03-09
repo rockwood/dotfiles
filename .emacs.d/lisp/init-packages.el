@@ -320,6 +320,22 @@
         ranger-max-preview-size 10
         ranger-hide-cursor nil))
 
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :delight
+  :hook
+  (elixir-mode . lsp)
+  :bind (:map rock/goto
+              ("d" . lsp-find-definition)
+              ("r" . lsp-find-reference))
+  :bind (:map rock/help
+              ("d" . lsp-describe-thing-at-point)))
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
 (use-package erlang)
 
 (use-package elixir-mode
@@ -327,6 +343,13 @@
   :config
   :bind (:map rock/elixir
               ("f" . elixir-format)))
+
+(use-package exunit
+  :bind (:map rock/elixir
+              ("t" . exunit-verify-all)
+              ("b" . exunit-verify)
+              ("e" . exunit-verify-single)
+              ("r" . exunit-rerun)))
 
 (use-package markdown-mode
   :init
