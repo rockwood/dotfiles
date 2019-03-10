@@ -124,6 +124,9 @@
   (rock/normalize-map ibuffer-mode-map)
   (evil-add-hjkl-bindings ibuffer-mode-map))
 
+(use-package eldoc
+  :delight)
+
 (use-package window-numbering
   :init
   (window-numbering-mode t))
