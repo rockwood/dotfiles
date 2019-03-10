@@ -74,14 +74,17 @@
               ("w" . toggle-word-wrap)
               ("a" . toggle-text-mode-auto-fill))
 
-  :bind (:map evil-normal-state-map
-              ("C-h" . evil-window-left)
-              ("C-j" . evil-window-down)
-              ("C-k" . evil-window-up)
-              ("C-l" . evil-window-right))
-
   :config
-  (evil-add-hjkl-bindings ibuffer-mode-map)
+  (defmacro rock/normalize-map (map)
+    "Augment a given map with rock-leader and evil-style window movement."
+    `(progn
+       (bind-key "SPC" 'rock-leader ,map)
+       (define-key ,map (kbd "C-j") 'evil-window-down)
+       (define-key ,map (kbd "C-k") 'evil-window-up)
+       (define-key ,map (kbd "C-h") 'evil-window-left)
+       (define-key ,map (kbd "C-l") 'evil-window-right)))
+
+  (rock/normalize-map evil-normal-state-map)
 
   (use-package evil-commentary
     :delight evil-commentary-mode
@@ -115,6 +118,11 @@
   :config
   (setq dumb-jump-selector 'ivy
         dumb-jump-force-searcher 'ag))
+
+(use-package ibuffer
+  :config
+  (rock/normalize-map ibuffer-mode-map)
+  (evil-add-hjkl-bindings ibuffer-mode-map))
 
 (use-package window-numbering
   :init
@@ -251,7 +259,7 @@
   (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   :config
-  (bind-key "SPC" 'rock-leader magit-mode-map)
+  (rock/normalize-map magit-mode-map)
   (use-package evil-magit)
   :bind (:map rock/magit
               ("m" . magit-status)
@@ -313,7 +321,7 @@
               ("k" . ranger-kill-buffers-without-window))
   :config
   (ranger-override-dired-mode t)
-  (bind-key "SPC" 'rock-leader ranger-mode-map)
+  (rock/normalize-map ranger-mode-map)
   (setq ranger-show-hidden t
         ranger-cleanup-eagerly t
         ranger-dont-show-binary t
@@ -345,6 +353,8 @@
               ("f" . elixir-format)))
 
 (use-package exunit
+  :config
+  (rock/normalize-map exunit-compilation-mode-map)
   :bind (:map rock/elixir
               ("t" . exunit-verify-all)
               ("b" . exunit-verify)
