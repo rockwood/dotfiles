@@ -167,9 +167,7 @@
 
 (use-package counsel
   :bind (("M-y" . counsel-yank-pop)
-         ("M-x" . counsel-M-x)
-         (:map rock/commands
-               ("y" . counsel-yank-pop))))
+         ("M-x" . counsel-M-x)))
 
 (use-package ivy
   :delight ivy-mode
