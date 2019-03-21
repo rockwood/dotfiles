@@ -184,7 +184,7 @@
   (defun rock/ignore-buffers (buf)
     (when (get-buffer buf)
       (with-current-buffer buf
-        (when (member major-mode '(dired-mode ranger-mode)) t))))
+        (when (member major-mode '(dired-mode ranger-mode fundamental-mode)) t))))
   :config
   (add-hook 'ivy-ignore-buffers 'rock/ignore-buffers)
   :bind (:map rock/buffers
