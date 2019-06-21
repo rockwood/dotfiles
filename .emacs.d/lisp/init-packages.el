@@ -426,4 +426,6 @@
 
 (use-package protobuf-mode)
 
+(use-package rust-mode)
+
 (provide 'init-packages)
