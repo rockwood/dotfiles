@@ -356,6 +356,7 @@
 (use-package exunit
   :config
   (rock/normalize-map exunit-compilation-mode-map)
+  (evil-add-hjkl-bindings exunit-compilation-mode-map)
   :bind (:map rock/elixir
               ("t" . exunit-verify-all)
               ("b" . exunit-verify)
