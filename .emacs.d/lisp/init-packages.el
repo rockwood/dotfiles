@@ -192,6 +192,9 @@
               ("TAB"      . ivy-alt-done)
               ("<escape>" . minibuffer-keyboard-quit)
               ("C-j"      . ivy-next-line)
+              ("C-k"      . ivy-previous-line))
+  :bind (:map ivy-switch-buffer-map
+              ("C-j"      . ivy-next-line)
               ("C-k"      . ivy-previous-line)))
 
 (use-package projectile
