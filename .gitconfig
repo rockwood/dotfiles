@@ -6,15 +6,15 @@
   l = "!. ~/.githelpers && pretty_git_log"
   r = !GIT_NO_PAGER=1 git l -20
   b = "!. ~/.githelpers && pretty_git_branch"
+  s = status --short --branch
   br = branch
-  st = status --short --branch
   co = checkout
-  tags = tag --list
-  remotes = remote --verbose
   # Interactive rebase with the given number of latest commits
-  reb = "!r() { git rebase -i HEAD~$1; }; r"
+  rb = "!r() { git rebase -i HEAD~$1; }; r"
   # Delete all merged branches
   cl = "!git branch --merged | grep -v '\\*\\|master' | xargs -n 1 git branch -d"
+  tags = tag --list
+  remotes = remote --verbose
 
 [core]
   excludesfile = ~/.gitignore
