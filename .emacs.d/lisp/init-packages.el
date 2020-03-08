@@ -101,12 +101,15 @@
     (evil-escape-mode)
     :bind ("C-g" . evil-escape)))
 
-(use-package seoul256-theme
-  :init
-  (setq seoul256-background 233)
+(use-package doom-themes
   :config
-  (set-face-attribute 'vertical-border nil :foreground "#252525")
-  (load-theme 'seoul256 t))
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+
+  ;; vibrant, opera, tomorrow-night, wilmersdorf, palenight
+  (load-theme 'doom-palenight t)
+
+  (doom-themes-visual-bell-config))
 
 (use-package dumb-jump
   :bind (:map rock/goto
@@ -139,8 +142,6 @@
         powerline-image-apple-rgb t
         spaceline-window-numbers-unicode t
         spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (set-face-attribute 'powerline-active2 nil :background "#222222")
-  (set-face-attribute 'powerline-inactive2 nil :background "#1c1c1c")
   (spaceline-spacemacs-theme))
 
 (use-package buffer-move
