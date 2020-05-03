@@ -7,6 +7,7 @@
   r = !GIT_NO_PAGER=1 git l -20
   b = "!. ~/.githelpers && pretty_git_branch"
   s = status --short --branch
+  d = diff
   br = branch
   co = checkout
   # Interactive rebase with the given number of latest commits
