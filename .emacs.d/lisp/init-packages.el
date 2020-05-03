@@ -293,6 +293,9 @@
        ;; force update evil keymaps after git-timemachine-mode loaded
        (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))))
 
+(use-package flycheck
+  :hook (typescript-mode . flycheck-mode))
+
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
@@ -341,8 +344,8 @@
   :ensure t
   :commands lsp
   :delight
-  :hook
-  (elixir-mode . lsp)
+  :config (add-to-list 'lsp-file-watch-ignored "[/\\\\]_build$")
+  :hook (elixir-mode . lsp)
   :bind (:map rock/goto
               ("d" . lsp-find-definition)
               ("r" . lsp-find-reference))
@@ -388,37 +391,60 @@
   :bind (:map rock/commands
               ("m" . flymd-flyit)))
 
+(use-package typescript-mode
+  :custom
+  (typescript-indent-level 2))
+
+(use-package tide
+  :init
+  (defun rock/setup-tide-mode()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    (company-mode +1))
+
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)))
+
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
-         ("\\.erb\\'" . web-mode))
+         ("\\.erb\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode))
   :init
   (setq scss-compile-at-save nil)
-  (defun rock/web-mode-hook ()
-    (setq indent-tabs-mode nil
-          web-mode-markup-indent-offset 2
-          web-mode-css-indent-offset 2
-          web-mode-code-indent-offset 2
-          web-mode-style-padding 2
-          web-mode-script-padding 2
-          web-mode-enable-current-element-highlight t))
-  (add-hook 'web-mode-hook  'rock/web-mode-hook))
+  :config
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                (rock/setup-tide-mode))))
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  :custom
+  (web-mode-enable-auto-indentation nil)
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2)
+  (web-mode-style-padding 2)
+  (web-mode-script-padding 2)
+  (web-mode-enable-current-element-highlight t))
 
 (use-package js2-mode
   :mode "\\.js\\'"
   :commands js2-mode
-  :init
-  (defun rock/js2-mode-hook ()
-    (setq js2-basic-offset 2
-          js2-strict-trailing-comma-warning nil
-          js2-warn-about-unused-function-arguments t))
-  (add-hook 'js2-mode-hook 'rock/js2-mode-hook))
+  :custom
+  (js2-basic-offset 2)
+  (js2-strict-trailing-comma-warning nil)
+  (js2-warn-about-unused-function-arguments t))
 
 (use-package rjsx-mode)
 
 (use-package css-mode
   :commands css-mode
-  :init
-  (setq-default css-indent-offset 2))
+  :custom
+  (css-indent-offset 2))
 
 (use-package rainbow-mode
   :delight rainbow-mode

@@ -27,3 +27,6 @@ dump.rdb
 
 # Elixir language server
 .elixir_ls
+
+# Typescript language server logs
+.log
