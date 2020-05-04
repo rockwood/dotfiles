@@ -439,6 +439,10 @@
   (js2-strict-trailing-comma-warning nil)
   (js2-warn-about-unused-function-arguments t))
 
+(use-package json-mode
+  :mode (("\\.json\\'" . json-mode))
+  :commands (json-mode))
+
 (use-package rjsx-mode)
 
 (use-package css-mode
