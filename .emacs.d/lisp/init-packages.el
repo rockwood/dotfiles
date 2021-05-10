@@ -412,6 +412,7 @@
 
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
+         ("\\.leex?\\'" . web-mode)
          ("\\.erb\\'" . web-mode)
          ("\\.tsx\\'" . web-mode))
   :init
