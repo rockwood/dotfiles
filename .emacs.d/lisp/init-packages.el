@@ -462,4 +462,6 @@
 
 (use-package rust-mode)
 
+(use-package php-mode)
+
 (provide 'init-packages)
