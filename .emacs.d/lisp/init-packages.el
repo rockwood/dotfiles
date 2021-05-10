@@ -434,10 +434,10 @@
 (use-package js2-mode
   :mode "\\.js\\'"
   :commands js2-mode
-  :custom
-  (js2-basic-offset 2)
-  (js2-strict-trailing-comma-warning nil)
-  (js2-warn-about-unused-function-arguments t))
+  :config
+  (setq js2-basic-offset 2
+        js2-strict-trailing-comma-warning nil
+        js2-warn-about-unused-function-arguments t))
 
 (use-package json-mode
   :mode (("\\.json\\'" . json-mode))
