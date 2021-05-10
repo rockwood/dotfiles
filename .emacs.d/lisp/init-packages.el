@@ -422,7 +422,6 @@
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
                 (rock/setup-tide-mode))))
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
   :custom
   (web-mode-enable-auto-indentation nil)
   (web-mode-markup-indent-offset 2)
