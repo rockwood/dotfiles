@@ -243,8 +243,8 @@
   :init
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t)
-  :config
   (global-undo-tree-mode)
+  (evil-set-undo-system 'undo-tree)
   :bind (:map rock/commands
               ("u" . undo-tree-visualize)))
 
