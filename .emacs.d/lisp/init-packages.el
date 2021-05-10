@@ -344,7 +344,7 @@
   :ensure t
   :commands lsp
   :delight
-  :config (add-to-list 'lsp-file-watch-ignored "[/\\\\]_build$")
+  :config (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]_uploads\\'")
   :hook (elixir-mode . lsp)
   :bind (:map rock/goto
               ("d" . lsp-find-definition)
