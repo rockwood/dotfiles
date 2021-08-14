@@ -261,13 +261,11 @@
 
 (use-package magit
   :init
-  (setq magit-completing-read-function 'ivy-completing-read
-        magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (add-hook 'git-commit-setup-hook (lambda () (display-line-numbers-mode 0)))
   (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
-  :config
-  (rock/normalize-map magit-mode-map)
+  :config (rock/normalize-map magit-mode-map)
   :bind (:map rock/magit
               ("m" . magit-status)
               ("l" . magit-log-current)
