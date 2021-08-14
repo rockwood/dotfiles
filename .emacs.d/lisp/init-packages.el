@@ -86,19 +86,19 @@
 
   (rock/normalize-map evil-normal-state-map)
 
+  (use-package evil-collection
+    :config (evil-collection-init))
+
   (use-package evil-commentary
     :delight evil-commentary-mode
-    :config
-    (evil-commentary-mode))
+    :config (evil-commentary-mode))
 
   (use-package evil-surround
-    :init
-    (global-evil-surround-mode))
+    :init (global-evil-surround-mode))
 
   (use-package evil-escape
     :delight evil-escape-mode
-    :config
-    (evil-escape-mode)
+    :config (evil-escape-mode)
     :bind ("C-g" . evil-escape)))
 
 (use-package doom-themes
@@ -124,8 +124,7 @@
 
 (use-package ibuffer
   :config
-  (rock/normalize-map ibuffer-mode-map)
-  (evil-add-hjkl-bindings ibuffer-mode-map))
+  (rock/normalize-map ibuffer-mode-map))
 
 (use-package eldoc
   :delight)
@@ -269,7 +268,6 @@
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
   :config
   (rock/normalize-map magit-mode-map)
-  (use-package evil-magit)
   :bind (:map rock/magit
               ("m" . magit-status)
               ("l" . magit-log-current)
