@@ -261,7 +261,6 @@
 
 (use-package magit
   :init
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (add-hook 'git-commit-setup-hook (lambda () (display-line-numbers-mode 0)))
   (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
