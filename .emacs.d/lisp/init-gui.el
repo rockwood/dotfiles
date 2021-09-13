@@ -87,6 +87,10 @@
 (global-hl-line-mode 1)
 (set-face-attribute 'hl-line nil :foreground nil :background "#333")
 
+;; Optimize lsp performance
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))
+
 ;; Mac specific config
 (let ((is-mac (string-equal system-type "darwin")))
   (when is-mac
