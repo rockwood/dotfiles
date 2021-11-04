@@ -52,8 +52,6 @@
               tab-width 2
               fill-column 100)
 
-(setq display-line-numbers-type 'relative)
-
 ;; Show line numbers
 (global-display-line-numbers-mode 1)
 
