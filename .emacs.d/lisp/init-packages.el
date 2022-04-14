@@ -422,10 +422,12 @@
 (use-package web-mode
   :mode (("\\.eex?\\'" . web-mode)
          ("\\.leex?\\'" . web-mode)
+         ("\\.heex?\\'" . web-mode)
          ("\\.erb\\'" . web-mode)
          ("\\.tsx\\'" . web-mode))
   :init
-  (setq scss-compile-at-save nil)
+  (setq scss-compile-at-save nil
+        web-mode-engines-alist '(("elixir"           . "\\.[hl]?eex\\'")))
   :config
   (add-hook 'web-mode-hook
             (lambda ()
