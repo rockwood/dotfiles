@@ -254,11 +254,7 @@
   (global-company-mode)
   (define-key company-active-map (kbd "TAB") 'company-complete)
   (define-key company-active-map (kbd "C-j") 'company-select-next)
-  (define-key company-active-map (kbd "C-k") 'company-select-previous)
-  :config
-  (use-package company-lsp
-    :ensure t
-    :commands company-lsp))
+  (define-key company-active-map (kbd "C-k") 'company-select-previous))
 
 (use-package magit
   :init
