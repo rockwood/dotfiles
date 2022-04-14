@@ -241,7 +241,8 @@
   :delight undo-tree-mode
   :init
   (setq undo-tree-visualizer-timestamps t
-        undo-tree-visualizer-diff t)
+        undo-tree-visualizer-diff t
+        undo-tree-history-directory-alist `((".*" . ,rock/backup-dir)))
   (global-undo-tree-mode)
   (evil-set-undo-system 'undo-tree)
   :bind (:map rock/commands
