@@ -336,13 +336,27 @@
   :ensure t
   :commands lsp
   :delight
-  :config (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]_uploads\\'")
   :hook (elixir-mode . lsp)
+  :init
+  (setq lsp-elixir-suggest-specs nil)
+  :bind (:map rock/commands
+              ("f" . lsp-format-buffer))
   :bind (:map rock/goto
               ("d" . lsp-find-definition)
               ("r" . lsp-find-reference))
   :bind (:map rock/help
-              ("d" . lsp-describe-thing-at-point)))
+              ("d" . lsp-describe-thing-at-point))
+  :bind (:map rock/toggles
+              ("l" . lsp))
+  :config
+  (dolist (match
+           '("[/\\\\]uploads$"
+             "[/\\\\]node_modules$"
+             "[/\\\\]deps"
+             "[/\\\\]build"
+             "[/\\\\]_build"))
+    (add-to-list 'lsp-file-watch-ignored match))
+  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol))
 
 (use-package erlang)
 
