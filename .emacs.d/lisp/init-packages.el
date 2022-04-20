@@ -13,21 +13,23 @@
 
 (use-package evil
   :init
-  (setq evil-shift-width 2)
+  (setq evil-shift-width 2
+        evil-want-keybinding nil
+        evil-undo-system 'undo-tree)
   (evil-mode 1)
 
   ;; Spacemacs style leader bindings
-  (bind-keys :map evil-normal-state-map :prefix "SPC" :prefix-map rock-leader)
-  (bind-keys :map rock-leader :prefix "b" :prefix-map rock/buffers)
-  (bind-keys :map rock-leader :prefix "w" :prefix-map rock/windows)
-  (bind-keys :map rock-leader :prefix "d" :prefix-map rock/directories)
-  (bind-keys :map rock-leader :prefix "p" :prefix-map rock/projects)
-  (bind-keys :map rock-leader :prefix "e" :prefix-map rock/elixir)
-  (bind-keys :map rock-leader :prefix "m" :prefix-map rock/magit)
-  (bind-keys :map rock-leader :prefix "h" :prefix-map rock/help)
-  (bind-keys :map rock-leader :prefix "t" :prefix-map rock/toggles)
-  (bind-keys :map rock-leader :prefix "g" :prefix-map rock/goto)
-  (bind-keys :map rock-leader :prefix "c" :prefix-map rock/commands)
+  :bind (:map evil-normal-state-map :prefix "SPC" :prefix-map rock-leader)
+  :bind (:map rock-leader :prefix "b" :prefix-map rock/buffers)
+  :bind (:map rock-leader :prefix "w" :prefix-map rock/windows)
+  :bind (:map rock-leader :prefix "d" :prefix-map rock/directories)
+  :bind (:map rock-leader :prefix "p" :prefix-map rock/projects)
+  :bind (:map rock-leader :prefix "e" :prefix-map rock/elixir)
+  :bind (:map rock-leader :prefix "m" :prefix-map rock/magit)
+  :bind (:map rock-leader :prefix "h" :prefix-map rock/help)
+  :bind (:map rock-leader :prefix "t" :prefix-map rock/toggles)
+  :bind (:map rock-leader :prefix "g" :prefix-map rock/goto)
+  :bind (:map rock-leader :prefix "c" :prefix-map rock/commands)
 
   :bind (:map rock-leader
               ("1" . select-window-1)
@@ -75,6 +77,7 @@
               ("a" . toggle-text-mode-auto-fill))
 
   :config
+
   (defmacro rock/normalize-map (map)
     "Augment a given map with rock-leader and evil-style window movement."
     `(progn
@@ -122,9 +125,7 @@
   (setq dumb-jump-selector 'ivy
         dumb-jump-force-searcher 'ag))
 
-(use-package ibuffer
-  :config
-  (rock/normalize-map ibuffer-mode-map))
+(use-package ibuffer)
 
 (use-package eldoc
   :delight)
@@ -244,7 +245,6 @@
         undo-tree-visualizer-diff t
         undo-tree-history-directory-alist `((".*" . ,rock/backup-dir)))
   (global-undo-tree-mode)
-  (evil-set-undo-system 'undo-tree)
   :bind (:map rock/commands
               ("u" . undo-tree-visualize)))
 
@@ -261,7 +261,6 @@
   (add-hook 'git-commit-setup-hook (lambda () (display-line-numbers-mode 0)))
   (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
   (add-hook 'with-editor-mode-hook 'evil-insert-state)
-  :config (rock/normalize-map magit-mode-map)
   :bind (:map rock/magit
               ("m" . magit-status)
               ("l" . magit-log-current)
@@ -283,7 +282,7 @@
     '(progn
        (evil-make-overriding-map git-timemachine-mode-map 'normal)
        ;; force update evil keymaps after git-timemachine-mode loaded
-       (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))))
+       (add-hook 'git-timemachine-mode-hook #'evil-ormalize-keymaps))))
 
 (use-package flycheck
   :hook (typescript-mode . flycheck-mode))
@@ -325,7 +324,6 @@
               ("k" . ranger-kill-buffers-without-window))
   :config
   (ranger-override-dired-mode t)
-  (rock/normalize-map ranger-mode-map)
   (setq ranger-show-hidden t
         ranger-cleanup-eagerly t
         ranger-dont-show-binary t
@@ -368,7 +366,6 @@
 
 (use-package exunit
   :config
-  (rock/normalize-map exunit-compilation-mode-map)
   (evil-add-hjkl-bindings exunit-compilation-mode-map)
   :bind (:map rock/elixir
               ("t" . exunit-verify-all)
