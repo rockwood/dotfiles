@@ -276,13 +276,7 @@
 
 (use-package git-timemachine
   :bind (:map rock/magit
-              ("t" . git-timemachine))
-  :config
-  (eval-after-load 'git-timemachine
-    '(progn
-       (evil-make-overriding-map git-timemachine-mode-map 'normal)
-       ;; force update evil keymaps after git-timemachine-mode loaded
-       (add-hook 'git-timemachine-mode-hook #'evil-ormalize-keymaps))))
+              ("t" . git-timemachine)))
 
 (use-package flycheck
   :hook (typescript-mode . flycheck-mode))
