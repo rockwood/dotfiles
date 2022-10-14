@@ -325,12 +325,10 @@
         ranger-hide-cursor nil))
 
 (use-package lsp-mode
-  :ensure t
   :commands lsp
-  :delight
-  :hook (elixir-mode . lsp)
-  :init
-  (setq lsp-elixir-suggest-specs nil)
+  :hook ((elixir-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :init (setq lsp-elixir-suggest-specs nil)
   :bind (:map rock/commands
               ("f" . lsp-format-buffer))
   :bind (:map rock/goto
