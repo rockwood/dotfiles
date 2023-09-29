@@ -298,18 +298,6 @@
   :commands er/expand-region
   :bind ("C-=" . er/expand-region))
 
-(use-package yasnippet
-  :delight yas-minor-mode
-  :init
-  (yas-global-mode)
-  :config
-  (use-package yasnippet-snippets)
-  (use-package auto-yasnippet
-    :config
-    :bind ("C-<tab>" . aya-expand)
-          (:map rock/commands
-                ("y" . aya-create))))
-
 (use-package ranger
   :demand t
   :bind (:map rock/directories
