@@ -312,29 +312,22 @@
         ranger-max-preview-size 10
         ranger-hide-cursor nil))
 
-(use-package lsp-mode
-  :commands lsp
-  :hook ((elixir-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :init (setq lsp-elixir-suggest-specs nil)
+(use-package eglot
+  :hook ((elixir-mode . eglot-ensure)
+         (elixir-ts-mode-hook . eglot-ensure)
+         (heex-ts-mode-hook . eglot-ensure))
+  :hook (eglot-managed-mode . company-mode)
   :bind (:map rock/commands
-              ("f" . lsp-format-buffer))
+              ("f" . eglot-format-buffer)
+              ("r" . eglot-rename))
   :bind (:map rock/goto
-              ("d" . lsp-find-definition)
-              ("r" . lsp-find-reference))
+              ("d" . xref-find-definitions)
+              ("r" . xref-find-references))
   :bind (:map rock/help
-              ("d" . lsp-describe-thing-at-point))
-  :bind (:map rock/toggles
-              ("l" . lsp))
+              ("d" . eldoc))
   :config
-  (dolist (match
-           '("[/\\\\]uploads$"
-             "[/\\\\]node_modules$"
-             "[/\\\\]deps"
-             "[/\\\\]build"
-             "[/\\\\]_build"))
-    (add-to-list 'lsp-file-watch-ignored match))
-  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol))
+  (add-to-list 'eglot-server-programs
+               `((elixir-ts-mode heex-ts-mode elixir-mode) . ("nextls" "--stdio=true"))))
 
 (use-package erlang)
 
